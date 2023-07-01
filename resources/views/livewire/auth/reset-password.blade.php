@@ -5,7 +5,7 @@
                     <div class="card z-index-0 fadeIn3 fadeInBottom">
                         <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                             <div class="bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1">
-                                <h4 class="text-white font-weight-bolder text-center mt-2 mb-0">Change your password
+                                <h4 class="text-white font-weight-bolder text-center mt-2 mb-0">Cambia tu contraseñá
                                 </h4>
                             </div>
                         </div>
@@ -32,7 +32,7 @@
 
                                 <div
                                     class="input-group input-group-outline mt-3 @if(strlen($password ?? '') > 0) is-filled @endif">
-                                    <label class="form-label">New Password</label>
+                                    <label class="form-label">Nueva contraseña</label>
                                     <input wire:model="password" type="password" class="form-control">
                                 </div>
                                 @error('password')
@@ -41,20 +41,21 @@
 
                                 <div
                                     class="input-group input-group-outline mt-3 @if(strlen($passwordConfirmation ?? '') > 0) is-filled @endif">
-                                    <label class="form-label">Confirm Password</label>
+                                    <label class="form-label">Confirma la contraseñá</label>
                                     <input wire:model="passwordConfirmation" type="password" class="form-control">
                                 </div>
                                 @error('password_confirmation')
                                 <p class='text-danger inputerror'>{{ $message }} </p>
                                 @enderror
                                 <div class="text-center">
-                                    <button type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2">Change
-                                        password</button>
+                                    <button type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2">
+                                        Cambiar contraseña
+                                    </button>
                                 </div>
                                 <p class="mt-4 text-sm text-center">
-                                    Don't have an account?
+                                    ¿ No tienes una cuenta ?<br/>
                                     <a href="{{ route('register') }}"
-                                        class="text-primary text-gradient font-weight-bold">Sign up</a>
+                                        class="text-primary text-gradient font-weight-bold">Solicita una</a>
                                 </p>
                             </form>
                         </div>
@@ -62,4 +63,3 @@
                 </div>
             </div>
         </div>
-        
