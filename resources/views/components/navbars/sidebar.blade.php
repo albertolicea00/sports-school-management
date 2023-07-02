@@ -10,8 +10,7 @@
             </a>
     </div>
     <hr class="horizontal light mt-0 mb-2">
-    <div class="collapse navbar-collapse  w-auto  max-height-vh-100" id="sidenav-collapse-main"
-        style = 'height: 100% !important;'>
+    <div class="w-auto max-height-vh-100" id="sidenav-collapse-main">
         <ul class="navbar-nav">
 {{----------------------------------------------------------------------------------------------------------------------------}}
             <li class="nav-item">
