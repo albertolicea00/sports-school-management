@@ -91,7 +91,7 @@
                           </div>
                       </div>
                       <div class="card-body">
-                          <h6 class="mb-0 ">Website Views</h6>
+                          <h6 class="mb-0 ">Métricas Semanales</h6>
                           <p class="text-sm ">Last Campaign Performance</p>
                           <hr class="dark horizontal">
                           <div class="d-flex ">
@@ -111,7 +111,7 @@
                           </div>
                       </div>
                       <div class="card-body">
-                          <h6 class="mb-0 "> Daily Sales </h6>
+                          <h6 class="mb-0 "> Métricas Mensuales</h6>
                           <p class="text-sm "> (<span class="font-weight-bolder">+15%</span>) increase in today
                               sales. </p>
                           <hr class="dark horizontal">
@@ -132,7 +132,7 @@
                           </div>
                       </div>
                       <div class="card-body">
-                          <h6 class="mb-0 ">Completed Tasks</h6>
+                          <h6 class="mb-0 ">Tareas Completadas</h6>
                           <p class="text-sm ">Last Campaign Performance</p>
                           <hr class="dark horizontal">
                           <div class="d-flex ">
@@ -149,7 +149,7 @@
                       <div class="card-header pb-0">
                           <div class="row">
                               <div class="col-lg-6 col-7">
-                                  <h6>Projects</h6>
+                                  <h6>Evaluaciones</h6>
                                   <p class="text-sm mb-0">
                                       <i class="fa fa-check text-info" aria-hidden="true"></i>
                                       <span class="font-weight-bold ms-1">30 done</span> this month
@@ -482,7 +482,7 @@
               <div class="col-lg-4 col-md-6">
                   <div class="card h-100">
                       <div class="card-header pb-0">
-                          <h6>Orders overview</h6>
+                          <h6>Actividad</h6>
                           <p class="text-sm">
                               <i class="fa fa-arrow-up text-success" aria-hidden="true"></i>
                               <span class="font-weight-bold">24%</span> this month
