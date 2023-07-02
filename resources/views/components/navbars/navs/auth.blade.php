@@ -4,7 +4,7 @@
     <div class="container-fluid py-1 px-3">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-                <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
+                <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Página</a></li>
                 <li class="breadcrumb-item text-sm text-dark active text-capitalize" aria-current="page">{{ str_replace('-', ' ', Route::currentRouteName()) }}</li>
             </ol>
             <h6 class="font-weight-bolder mb-0 text-capitalize">{{ str_replace('-', ' ', Route::currentRouteName()) }}</h6>
@@ -12,7 +12,7 @@
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
             <div class="ms-md-auto pe-md-3 d-flex align-items-center">
                 <div class="input-group input-group-outline">
-                    <label class="form-label">Type here...</label>
+                    <label class="form-label">Buscar...</label>
                     <input type="text" class="form-control">
                 </div>
             </div>
@@ -22,7 +22,7 @@
             <ul class="navbar-nav  justify-content-end">
                 <li class="nav-item d-flex align-items-center">
                     <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
-                        <i class="fa fa-user me-sm-1"></i>
+                        <i class="fas fa-sign-out-alt"></i>
                         <livewire:auth.logout/>
                     </a>
                 </li>
@@ -44,6 +44,9 @@
                     <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fa fa-bell cursor-pointer"></i>
+                        <span wire:click="destroy" class="d-sm-inline d-none">
+                            Notificaciones
+                        </span>
                     </a>
                     <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4"
                         aria-labelledby="dropdownMenuButton">
@@ -122,6 +125,8 @@
                             </a>
                         </li>
                     </ul>
+
+                    {{-- convertir en componente reutilizable para el perfil --}}
                 </li>
             </ul>
         </div>
