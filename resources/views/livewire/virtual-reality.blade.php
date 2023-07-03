@@ -10,23 +10,41 @@
                     <img class="border-radius-lg" alt="Image placeholder" src="{{ asset('assets') }}/img/team-1.jpg">
                 </a>
                 <button class="btn btn-white border-radius-lg p-2 mt-n4 mt-md-2" type="button" data-bs-toggle="tooltip"
-                    data-bs-placement="right" title="Home">
+                    data-bs-placement="right" title="Inicio">
                     <i class="material-icons p-2">home</i>
                 </button>
                 <button class="btn btn-white border-radius-lg p-2 mt-n4 mt-md-0" type="button" data-bs-toggle="tooltip"
-                    data-bs-placement="right" title="Search">
+                    data-bs-placement="right" title="Buscar">
                     <i class="material-icons p-2">search</i>
                 </button>
                 <button class="btn btn-white border-radius-lg p-2 mt-n4 mt-md-0" type="button" data-bs-toggle="tooltip"
-                    data-bs-placement="right" title="Minimize">
+                    data-bs-placement="right" title="Acciones">
                     <i class="material-icons p-2">more_horiz</i>
                 </button>
             </div>
             <div class="col-lg-8 col-md-11 ps-md-5 mb-5 mb-md-0">
                 <div class="d-flex">
                     <div class="me-auto">
-                        <h1 class="display-1 font-weight-bold mt-n3 mb-0 text-white">28°C</h1>
-                        <h6 class="text-uppercase mb-0 ms-1 text-white">Cloudy</h6>
+                        <h1 class="display-1 font-weight-bold mt-n3 mb-0 text-white">
+                            @php
+                                // URL para acceder a la API de OpenWeatherMap
+                                //$url = "https://api.openweathermap.org/data/2.5/weather?q=Madrid&units=metric";
+
+                                // Realizar una solicitud HTTP a la API
+                                //$response = file_get_contents($url);
+
+                                // Decodificar la respuesta JSON
+                                //$data = json_decode($response);
+
+                                // Obtener la temperatura actual
+                                //$temperature = $data->main->temp;
+
+                                // Mostrar la temperatura en la página
+                                $temperature = '28';
+                                echo $temperature . "°C";
+                            @endphp
+                        </h1>
+                        <h6 class="text-uppercase mb-0 ms-1 text-white">Nubleado</h6>
                     </div>
                     <div class="ms-auto">
                         <img class="w-50 float-end mt-n6 mt-lg-n4"
@@ -69,7 +87,7 @@
                         <div class="card bg-gradient-dark move-on-hover">
                             <div class="card-body">
                                 <div class="d-flex">
-                                    <h5 class="mb-0 text-white">To Do</h5>
+                                    <h5 class="mb-0 text-white">Por hacer</h5>
                                     <div class="ms-auto">
                                         <h1 class="text-white text-end mb-0 mt-n2">7</h1>
                                         <p class="text-sm mb-0 text-white">items</p>
@@ -86,7 +104,7 @@
                         <div class="card move-on-hover mt-4">
                             <div class="card-body">
                                 <div class="d-flex">
-                                    <p class="mb-0">Emails (21)</p>
+                                    <p class="mb-0">Tareas (21)</p>
                                     <a href="javascript:;" class="ms-auto" data-bs-toggle="tooltip"
                                         data-bs-placement="top" title="Check your emails">
                                         Check
