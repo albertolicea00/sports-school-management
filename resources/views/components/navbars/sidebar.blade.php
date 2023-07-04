@@ -34,8 +34,8 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white "
-                    href="javascript:void(0)">
+                <a class="nav-link text-white {{ Route::currentRouteName() == 'machine-learning' ? ' active bg-gradient-primary' : '' }} "
+                    href="{{ route('machine-learning') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i style="font-size: 1rem;" class="fas fa-robot ps-0 pe-0 text-center"></i>
                     </div>
@@ -47,8 +47,8 @@
                 <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Mi Cuenta</h6>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white {{ Route::currentRouteName() == 'profile' ? ' active bg-gradient-primary' : '' }}  "
-                    href="{{ route('profile') }}">
+                <a class="nav-link text-white {{ Route::currentRouteName() == 'my-profile' ? 'active bg-gradient-primary' : '' }}"
+                    href="{{ route('my-profile') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">person</i>
                     </div>
@@ -56,8 +56,8 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white {{ Route::currentRouteName() == 'notifications' ? ' active bg-gradient-primary' : '' }}  "
-                    href="{{ route('notifications') }}">
+                <a class="nav-link text-white {{ Route::currentRouteName() == 'my-notifications' ? 'active bg-gradient-primary' : '' }}"
+                    href="{{ route('my-notifications') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">notifications</i>
                     </div>
@@ -65,8 +65,8 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white"
-                    href="javascript:void(0)">
+                <a class="nav-link text-white {{ Route::currentRouteName() == 'my-players' ? 'active bg-gradient-primary' : '' }}"
+                    href="{{ route('my-players') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i style="font-size: 1rem;" class="fas fa-lg fa-users ps-0 pe-0 text-center"></i>
                     </div>
@@ -74,8 +74,17 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white "
-                    href="javascript:void(0)">
+                <a class="nav-link text-white {{ Route::currentRouteName() == 'my-trainers' ? 'active bg-gradient-primary' : '' }}"
+                    href="{{ route('my-trainers') }}">
+                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i style="font-size: 1rem;" class="fas fa-lg fa-users ps-0 pe-0 text-center"></i>
+                    </div>
+                    <span class="nav-link-text ms-2">Mis entrenadores</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white {{ Route::currentRouteName() == 'my-tasks' ? 'active bg-gradient-primary' : '' }}"
+                    href="{{ route('my-tasks') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i style="font-size: 1rem;" class="fas fa-tasks ps-1 pe-1 text-center"></i>
                     </div>
@@ -87,8 +96,8 @@
                 <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Gestión</h6>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white"
-                    href="javascript:void(0)">
+                <a class="nav-link text-white {{ Route::currentRouteName() == 'players-management' ? 'active bg-gradient-primary' : '' }}"
+                    href="{{ route('players-management') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i style="font-size: 1rem;" class="fas fa-lg fa-running ps-2 pe-2 text-center"></i>
                     </div>
@@ -96,8 +105,8 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white {{ Route::currentRouteName() == 'user-management' ? ' active bg-gradient-primary' : '' }} "
-                    href="{{ route('user-management') }}">
+                <a class="nav-link text-white {{ Route::currentRouteName() == 'users-management' ? 'active bg-gradient-primary' : '' }}"
+                    href="{{ route('users-management') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i style="font-size: 1rem;" class="fas fa-users-cog ps-1 pe-1 text-center"></i>
                     </div>
@@ -105,8 +114,8 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white"
-                    href="javascript:void(0)">
+                <a class="nav-link text-white {{ Route::currentRouteName() == 'permisions-management' || Route::currentRouteName() == 'roles-management' ? 'active bg-gradient-primary' : '' }}"
+                    href="{{ route('roles-management') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i style="font-size: 1rem;" class="fas fa-shield-alt ps-1 pe-1 text-center"></i>
                     </div>
@@ -114,8 +123,8 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white"
-                    href="javascript:void(0)">
+                <a class="nav-link text-white {{ Route::currentRouteName() == 'accents-management' ? 'active bg-gradient-primary' : '' }}"
+                    href="{{ route('accents-management') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i style="font-size: 1rem;" class="fas fa-lg fa-school ps-1 pe-1 text-center"></i>
                     </div>
@@ -123,8 +132,8 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white"
-                    href="javascript:void(0)">
+                <a class="nav-link text-white {{ Route::currentRouteName() == 'sports-management' ? 'active bg-gradient-primary' : '' }}"
+                    href="{{ route('sports-management') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i style="font-size: 1rem;" class="fas fa-lg fa-volleyball-ball ps-1 pe-1 text-center"></i>
                     </div>
@@ -136,8 +145,8 @@
                 <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Banco de datos</h6>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white"
-                    href="javascript:void(0)">
+                <a class="nav-link text-white {{ Route::currentRouteName() == 'database-0709' ? 'active bg-gradient-primary' : '' }} "
+                    href="{{ route('database-0709') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i style="font-size: 1rem;" class="fas fa-lg fa-server ps-2 pe-2 text-center"></i>
                     </div>
@@ -145,8 +154,8 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white"
-                    href="javascript:void(0)">
+                <a class="nav-link text-white {{ Route::currentRouteName() == 'database-1012' ? 'active bg-gradient-primary' : '' }} "
+                    href="{{ route('database-1012') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i style="font-size: 1rem;" class="fas fa-lg fa-server ps-2 pe-2 text-center"></i>
                     </div>
@@ -154,8 +163,8 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white"
-                    href="javascript:void(0)">
+                <a class="nav-link text-white {{ Route::currentRouteName() == 'database-1315' ? 'active bg-gradient-primary' : '' }} "
+                    href="{{ route('database-1315') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i style="font-size: 1rem;" class="fas fa-lg fa-server ps-2 pe-2 text-center"></i>
                     </div>
@@ -163,8 +172,8 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white"
-                    href="javascript:void(0)">
+                <a class="nav-link text-white {{ Route::currentRouteName() == 'database-1518' ? 'active bg-gradient-primary' : '' }} "
+                    href="{{ route('database-1518') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i style="font-size: 1rem;" class="fas fa-lg fa-server ps-2 pe-2 text-center"></i>
                     </div>
@@ -182,7 +191,16 @@
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">view_in_ar</i>
                     </div>
-                    <span class="nav-link-text ms-1">Realidad Virtual</span>
+                    <span class="nav-link-text ms-1">Vista inmersiva</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white {{ Route::currentRouteName() == 'more-tools' ? ' active bg-gradient-primary' : '' }}  "
+                    href="{{ route('more-tools') }}">
+                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i style="font-size: 1rem;" class="fas fa-lg fa-tools ps-0 pe-2 text-center"></i>
+                    </div>
+                    <span class="nav-link-text ms-0">Mas Herramientas</span>
                 </a>
             </li>
             <li class="nav-item">
