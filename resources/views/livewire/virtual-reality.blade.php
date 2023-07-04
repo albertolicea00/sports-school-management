@@ -1,9 +1,8 @@
-<div class="mt-n3">
-</div>
+
 
 <div class="section min-vh-85 position-relative transform-scale-0 transform-scale-md-7">
     <div class="container-fluid">
-        <div class="row pt-10">
+        <div class="row pt-0">
             <div class="col-lg-1 col-md-1 pt-5 pt-lg-0 ms-lg-5 text-center">
                 <a href="javascript:;" class="avatar avatar-lg border-0 p-1" data-bs-toggle="tooltip"
                     data-bs-placement="right" title="My Profile">

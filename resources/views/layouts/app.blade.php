@@ -23,17 +23,24 @@
     {{ $slot }}
     @elseif (in_array(request()->route()->getName(),['virtual-reality']))
     <div class="virtual-reality">
-        <x-navbars.navs.auth></x-navbars.navs.auth>
-        <div class="border-radius-xl mx-2 mx-md-3 position-relative"
-            style="background-image: url('{{ asset('assets') }}/img/vr-bg.jpg'); background-size: cover;">
-            <x-navbars.sidebar></x-navbars.sidebar>
-            <main class="main-content border-radius-lg h-100">
-                {{  $slot }}
+        <style wire:ignore>
+            body{
+                background-image: url('{{ asset('assets') }}/img/vr-bg.jpg'); background-size: cover;
+                /* overflow : hidden; */
+            }
+        </style>
+        {{-- <x-navbars.navs.auth></x-navbars.navs.auth> --}}
 
+        <div class="border-radius-xl mx-0 mx-md-0 position-relative">
+        {{-- style="background-image: url('{{ asset('assets') }}/img/vr-bg.jpg'); background-size: cover;"> --}}
+            <main class="main-content border-radius-lg h-100 z-index-2">
+                {{  $slot }}
+            </main>
         </div>
-        <x-footers.auth></x-footers.auth>
-        </main>
-        <x-plugins></x-plugins>
+        {{-- <div class="position-fixed bottom-0 w-100 z-index-0" style="width: -webkit-fill-available;"> --}}
+            <x-footers.auth></x-footers.auth>
+        {{-- </div> --}}
+        {{-- <x-plugins></x-plugins> --}}
     </div>
     @else
     <x-navbars.sidebar></x-navbars.sidebar>
@@ -44,6 +51,6 @@
 
         <x-footers.auth></x-footers.auth>
     </main>
-    <x-plugins></x-plugins>
+    {{-- <x-plugins></x-plugins> --}}
     @endif
 </x-layouts.base>
