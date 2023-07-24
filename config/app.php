@@ -178,6 +178,11 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /*
+         * Vendor Service Providers...
+         */
+        Spatie\Permission\PermissionServiceProvider::class,
+
     ],
 
     /*
@@ -233,6 +238,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        'Permission' => Spatie\Permission\Models\Permission::class,
     ],
 
 ];
