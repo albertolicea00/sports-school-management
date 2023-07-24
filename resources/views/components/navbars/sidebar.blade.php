@@ -204,9 +204,20 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a class="nav-link text-white 
+                {{ substr(Route::currentRouteName(), -4)  == 'help' || substr(Route::currentRouteName(), 4)  == 'help' 
+                    ? ' active bg-gradient-primary' : '' }}  "
+                    href="{{ route('help') }}">
+                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i style="font-size: 1rem;" class="fas fa-lg fa-book-reader ps-0 pe-2 text-center"></i>
+                    </div>
+                    <span class="nav-link-text ms-0">Ayuda y Soporte</span>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link text-white " href="{{ route('static-sign-in') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="material-icons opacity-10">login</i>
+                        <i class="material-icons opacity-10">logout</i>
                     </div>
                     <span class="nav-link-text ms-1">
                         <livewire:auth.logout/>

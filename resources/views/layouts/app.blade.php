@@ -42,15 +42,28 @@
         {{-- </div> --}}
         {{-- <x-plugins></x-plugins> --}}
     </div>
+
+
+
+    @elseif (in_array(request()->route()->getName(),['help']))
+        {{-- <x-navbars.sidebar-help></x-navbars.sidebar-help> --}}
+        {{-- <x-navbars.sidebar></x-navbars.sidebar> --}}
+        <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+            <x-navbars.navs.auth></x-navbars.navs.auth>
+
+            {{ $slot }}
+
+            <x-footers.auth></x-footers.auth>
+        </main>
     @else
-    <x-navbars.sidebar></x-navbars.sidebar>
-    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-        <x-navbars.navs.auth></x-navbars.navs.auth>
+        <x-navbars.sidebar></x-navbars.sidebar>
+        <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+            <x-navbars.navs.auth></x-navbars.navs.auth>
 
-        {{ $slot }}
+            {{ $slot }}
 
-        <x-footers.auth></x-footers.auth>
-    </main>
-    {{-- <x-plugins></x-plugins> --}}
+            <x-footers.auth></x-footers.auth>
+        </main>
+        {{-- <x-plugins></x-plugins> --}}
     @endif
 </x-layouts.base>

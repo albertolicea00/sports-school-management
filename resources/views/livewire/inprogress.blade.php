@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        {{-- <div class="col-md-8"> --}}
             <div class="card my-3 mx-1">
                 <div class="card-header">
                     <p class="h1"><i class="fas fa-tools"></i> &nbsp; En construcción</p>
@@ -18,6 +18,6 @@
             <div class="card my-3 mx-1">
                 {{-- contenido extra.... --}}
             </div>
-        </div>
+        {{-- </div> --}}
     </div>
 </div>

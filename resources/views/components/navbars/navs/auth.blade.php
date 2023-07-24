@@ -35,21 +35,32 @@
                         </div>
                     </a>
                 </li>
-                <li class="nav-item px-3 d-flex align-items-center">
-                    <a href="javascript:;" class="nav-link text-body p-0">
-                        <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
-                    </a>
-                </li>
-                <li class="nav-item dropdown pe-2 d-flex align-items-center">
-                    <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fa fa-bell cursor-pointer"></i>
-                        <span wire:click="destroy" class="d-sm-inline d-none">
-                            Notificaciones
-                        </span>
-                    </a>
-                    <livewire:notifications/>
-                </li>
+
+
+                @if (in_array(request()->route()->getName(),['help']))
+                    <div class="btn btn-primary py-2 mx-3 my-0" style="">
+                        <a class="text-white" href="{{ route('my-profile') }}"><i class="fas fa-sign-in-alt"></i> Regresar a la App</a>
+                    </div>
+                @else
+                    <li class="nav-item px-3 d-flex align-items-center">
+                        <a href="javascript:;" class="nav-link text-body p-0">
+                            <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown pe-2 d-flex align-items-center">
+                        <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa fa-bell cursor-pointer"></i>
+                            <span wire:click="destroy" class="d-sm-inline d-none">
+                                Notificaciones
+                            </span>
+                        </a>
+                        <livewire:notifications/>
+                    </li>
+                @endif
+
+
+
             </ul>
         </div>
     </div>
