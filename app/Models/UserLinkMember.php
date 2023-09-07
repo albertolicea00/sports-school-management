@@ -14,4 +14,13 @@ class UserLinkMember extends Model
         'member_id',
         'meta',
     ];
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function member()
+    {
+        return $this->belongsTo(Member::class, 'member_id');
+    }
 }

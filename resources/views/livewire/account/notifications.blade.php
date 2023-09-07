@@ -1,8 +1,3 @@
-<div>
-    @include('livewire.inprogress')
-</div>
-
-{{--
 <div class="">
     <div class="container-fluid py-4">
         <div class="row">
@@ -185,4 +180,4 @@
             </div>
         </div>
     </div>
-</div> --}}
+</div>

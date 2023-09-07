@@ -16,11 +16,8 @@ return new class extends Migration
             $table->string('dni');
             $table->string('nickname')->nullable();
             $table->string('name')->nullable();
-            $table->string('middle_name')->nullable();
-            $table->string('first_lastname')->nullable();
-            $table->string('second_lastname')->nullable();
             $table->date('birth_date')->nullable();
-            // $table->unsignedBigInteger('gender_id')->nullable();
+            $table->string('gender')->nullable();
             // $table->unsignedBigInteger('title_id')->nullable();
             $table->string('about')->nullable();
             $table->boolean('enable')->default(1);

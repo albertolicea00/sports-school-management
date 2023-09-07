@@ -17,6 +17,13 @@ return new class extends Migration
             $table->unsignedBigInteger('member_id');
             $table->json('meta')->nullable();
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->constrained();
+            // ->onUpdate('cascade')
+            // ->onDelete('cascade');
+            $table->foreign('member_id')->references('id')->on('members')->constrained();
+            // ->onUpdate('cascade')
+            // ->onDelete('cascade');
         });
     }
 

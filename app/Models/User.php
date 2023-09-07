@@ -8,11 +8,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
+// use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, HasRoles;
-
+    // use HasOneThrough;
     /**
      * The attributes that are mass assignable.
      *
@@ -50,4 +51,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public function linkedMember()
+    {
+        return $this->belongsToMany(Member::class, 'user_link_members', 'user_id', 'member_id')
+            ->withPivot('meta')
+            ->withTimestamps();
+            // ->first();
+    }
+
 }

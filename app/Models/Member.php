@@ -13,15 +13,25 @@ class Member extends Model
         'dni',
         'nickname',
         'name',
-        'middle_name',
-        'first_lastname',
-        'second_lastname',
         'birth_date',
-        // 'gender_id',
+        'gender',
         // 'title_id',
         'about',
         'enable',
         // 'states',
         'meta',
     ];
+    // public function user()
+    // {
+    //     return $this->belongsTo(User::class, 'user_id');
+    // }
+
+    public function linkedUser()
+    {
+        return $this->belongsToMany(User::class, 'user_link_members', 'member_id', 'user_id')
+            ->withPivot('meta')
+            ->withTimestamps();
+            // ->first();
+    }
+
 }
