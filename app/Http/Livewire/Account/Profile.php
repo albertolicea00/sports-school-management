@@ -14,7 +14,8 @@ class Profile extends Component
     public $edit_mode = false;
     public $name, $phone, $email, $gender, $birth, $location;
 
-    public function exitEditMode(){
+    public function exitEditMode()
+    {
         $this->edit_mode = false;
         $this->reset();
         $this->resetValidation();
@@ -32,7 +33,7 @@ class Profile extends Component
             'gender' => 'required|in:M,F',
             'birth' => 'required|date',
             'location' => 'required|string|max:255',
-        ],[
+        ], [
             'required' => 'El campo es obligatorio.',
             'string' => 'El campo debe ser una cadena de caracteres.',
             'max' => 'El campo no debe superar :max caracteres.',
@@ -70,12 +71,9 @@ class Profile extends Component
 
             DB::commit(); // Confirma la transacción
             session()->flash('message', 'Información de perfil actualizado con éxito.');
-
         } catch (\Throwable $th) {
             DB::rollBack(); // Revierte la transacción en caso de error
             session()->flash('message', 'El perfil no se ha podido actualizar.');
         }
-
     }
 }
-
