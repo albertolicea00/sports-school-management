@@ -30,9 +30,9 @@ class Players extends Component
     {
 
         $this->validate([
-            'name' => 'required|string|max:100',
+            'name' => 'required|string|max:100|',
             'lastName' => 'required|string|max:255',
-            'dni' => 'required|string|max:11',
+            'dni' => 'required|string|max:11|min:11',
             'age' => 'required|numeric',
             'gender' => 'required|in:M,F',
             'birth' => 'required|date',
@@ -45,6 +45,8 @@ class Players extends Component
             'string' => 'El campo debe ser una cade na de caracteres.',
             'max' => 'El campo no debe superar :max caracteres.',
             'numeric' => 'El campo debe ser un número.',
+            'min' => 'El Dni debe de tener 11 caracteres.',
+
         ]);
 
         session()->flash('Deberia haberse cerrado');
