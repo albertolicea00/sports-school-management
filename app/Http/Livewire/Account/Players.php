@@ -30,14 +30,14 @@ class Players extends Component
     {
 
         $this->validate([
-            'name' => 'required|string|max:100|',
-            'lastName' => 'required|string|max:255',
-            'dni' => 'required|string|max:11|min:11',
+            'name' => 'required|alpha|regex:/^[a-zA-Z]+$/|max:100|',
+            'lastName' => 'required|alpha|regex:/^[a-zA-Z]+$/|max:255',
+            'dni' => 'required|regex:/^[0-9]+$/|size:11',
             'age' => 'required|numeric',
             'gender' => 'required|in:M,F',
             'birth' => 'required|date',
             'location' => 'required|string|max:255',
-            'skinColor' => 'required|string|max:255',
+            'skinColor' => 'required|alpha|regex:/^[a-zA-Z]+$/|max:255',
             'expeYears' => 'required|numeric|max:20',
 
         ], [
@@ -45,7 +45,9 @@ class Players extends Component
             'string' => 'El campo debe ser una cade na de caracteres.',
             'max' => 'El campo no debe superar :max caracteres.',
             'numeric' => 'El campo debe ser un número.',
-            'min' => 'El Dni debe de tener 11 caracteres.',
+            'alpha' => 'El campo no debe contener numeros ni caracteres especiales',
+            'size' => 'El DNI debe tener :size caracteres.',
+
 
         ]);
 
