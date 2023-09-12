@@ -14,14 +14,14 @@
                 <div class="px-2">
 
                     <div class="input-group input-group-outline mt-3">
-                        <label class="form-label" for="name" wire:ignore>Nombre</label>
                         <input wire:model="name" type="text" class="form-control" name="name" id="swal-name" required>
+                        <label class="form-label fix-label-form" for="name" wire:ignore>Nombre</label>
                     </div>
                     @error('name')<p class="text-danger inputerror text-start">{{ $message }}</p>@enderror
 
 
                     <div class="input-group input-group-outline mt-3">
-                        <label class="form-label" for="name" wire:ignore>Apellidos</label>
+                        <label class="form-label fix-label-form" for="name" wire:ignore>Apellidos</label>
                         <input wire:model="lastName" type="text" class="form-control" name="lastName" id="swal-lastName"
                             required>
                     </div>
@@ -29,47 +29,64 @@
 
 
                     <div class="input-group input-group-outline mt-3">
-                        <label class="form-label" for="edad" wire:ignore>Edad</label>
+                        <label class="form-label fix-label-form" for="edad" wire:ignore>Edad</label>
                         <input wire:model="age" type="text" class="form-control" name="edad" id="swal-name" required>
                     </div>
                     @error('age')<p class="text-danger inputerror text-start">{{ $message }}</p>@enderror
 
                     <div class="input-group input-group-outline mt-3">
-                        <label class="form-label" for="dni" wire:ignore>Dni</label>
+                        <label class="form-label fix-label-form" for="dni" wire:ignore>Dni</label>
                         <input wire:model="dni" type="text" class="form-control" name="dni" id="swal-dni" required>
                     </div>
 
-                    @error('gender')<p class="text-danger inputerror text-start">{{ $message }}</p>@enderror
+                    {{-- @error('gender')<p class="text-danger inputerror text-start">{{ $message }}</p>@enderror
                     <div class="input-group input-group-outline mt-3">
                         <label class="form-label" for="gender" wire:ignore>Género</label>
                         <input wire:model="gender" type="text" class="form-control" name="gender" id="swal-gender"
                             required>
+                    </div> --}}
+
+                    <div class="input-group input-group-outline mt-4">
+                        <label class="form-label fix-label-form" for="gender" wire:ignore>Sexo :</label>
+                        <div class="form-check d-inline p-0">
+                            <input class="form-check-input" type="radio" name="gender_m" id="gender_m" checked
+                                wire:model='gender' value="M">
+                            <label class="custom-control-label" for="gender_m">Masculino</label>
+                        </div>
+                        <div class="form-check d-inline">
+                            <input class="form-check-input" type="radio" name="gender_f" id="gender_f"
+                                wire:model='gender' value='F'>
+                            <label class="custom-control-label" for="gender_f">Femenino</label>
+                        </div>
                     </div>
+                    @error('gender')<p class="text-danger inputerror text-start">{{ $message }}</p>@enderror
+
+
 
                     @error('birth')<p class="text-danger inputerror text-start">{{ $message }}</p>@enderror
                     <div class="input-group input-group-outline mt-3">
-                        <label class="form-label" for="birth" wire:ignore>Fecha de cumpleaños</label>
+                        <label class="form-label fix-label-form" for="birth" wire:ignore>Fecha de cumpleaños</label>
                         <input wire:model="birth" type="date" class="form-control" name="birth" id="swal-birth"
                             required>
                     </div>
                     @error('birth')<p class="text-danger inputerror text-start">{{ $message }}</p>@enderror
 
                     <div class="input-group input-group-outline mt-3">
-                        <label class="form-label" for="location" wire:ignore>Dirección</label>
                         <input wire:model="location" type="text" class="form-control" name="location" id="swal-location"
                             required>
+                        <label class="form-label fix-label-form" for="location" wire:ignore>Dirección</label>
                     </div>
                     @error('location')<p class="text-danger inputerror text-start">{{ $message }}</p>@enderror
 
                     <div class="input-group input-group-outline mt-3">
-                        <label class="form-label" for="skinColor" wire:ignore>Color de piel</label>
                         <input wire:model="skinColor" type="text" class="form-control" name="skinColor"
                             id="swal-skinColor" required>
+                        <label class="form-label fix-label-form" for="skinColor" wire:ignore>Color de piel</label>
                     </div>
                     @error('skinColor')<p class="text-danger inputerror text-start">{{ $message }}</p>@enderror
 
                     <div class="input-group input-group-outline mt-3">
-                        <label class="form-label" for="expeYears" wire:ignore>Experiencia</label>
+                        <label class="form-label fix-label-form" for="expeYears" wire:ignore>Experiencia</label>
                         <input wire:model="expeYears" type="text" class="form-control" name="expeYears"
                             id="swal-expeYears" required>
                     </div>
@@ -82,7 +99,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn bg-gradient-secondary" wire:click="exitcreateMode">cancelar</button>
-                <button type="button" class="btn bg-gradient-primary" wire:click="crearAtleta">Guardar
+                <button type="button" class="btn bg-gradient-primary" wire:click=" crearAtleta">Guardar
                     cambios</button>
             </div>
         </div>
