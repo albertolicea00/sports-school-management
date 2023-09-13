@@ -6,7 +6,7 @@
             aria-hidden="true" id="iconSidenav"></i>
             <a class="navbar-brand m-0 d-flex text-wrap align-items-center" href=" {{ route('dashboard') }} ">
                 <img src="{{ asset('assets') }}/img/logo-ct.png" class="navbar-brand-img h-100" alt="main_logo">
-                <span class="ms-2 font-weight-bold text-white">Logo o marca de la applicacion web</span>
+                <span class="ms-2 font-weight-bold text-white">Gestión docente al DEPORTE CUBANO</span>
             </a>
     </div>
     <hr class="horizontal light mt-0 mb-2">
@@ -204,8 +204,8 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white 
-                {{ substr(Route::currentRouteName(), -4)  == 'help' || substr(Route::currentRouteName(), 4)  == 'help' 
+                <a class="nav-link text-white
+                {{ substr(Route::currentRouteName(), -4)  == 'help' || substr(Route::currentRouteName(), 4)  == 'help'
                     ? ' active bg-gradient-primary' : '' }}  "
                     href="{{ route('help') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
