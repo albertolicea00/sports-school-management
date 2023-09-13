@@ -17573,3 +17573,7 @@ pre[class*="language-"] {
     overflow: auto !important; } }
 
 /*# sourceMappingURL=material-dashboard.css.map */
+.fix-label-form{
+  top: -2.5em !important;
+  left: -1em !important;
+}

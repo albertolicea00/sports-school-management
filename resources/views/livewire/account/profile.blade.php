@@ -132,20 +132,22 @@
                                 <hr class="horizontal gray-light my-4">
                                 <ul class="list-group">
                                     <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong
-                                            class="text-dark">Nombre:</strong> &nbsp;{{ auth()->user()->linkedMember->first()->name }}</li>
+                                            class="text-dark">Nombre:</strong> &nbsp;
+                                            {{ auth()->user()->linkedMember->first() ? auth()->user()->linkedMember->first() : auth()->user()->name }}
+                                        </li>
                                     <li class="list-group-item border-0 ps-0 text-sm"><strong
                                             class="text-dark">Cumple:</strong> &nbsp;
                                             @php if (!empty(auth()->user()->linkedMember->first()->birth_date)){
                                                 echo \Carbon\Carbon::parse(auth()->user()->linkedMember->first()->birth_date)->locale('es')->isoFormat('D [de] MMMM');
                                             } @endphp
                                     <li class="list-group-item border-0 ps-0 text-sm"><strong
-                                            class="text-dark">Genero:</strong> &nbsp; {{ auth()->user()->linkedMember->first()->gender }}</li>
+                                            class="text-dark">Genero:</strong> &nbsp; {{ auth()->user()->linkedMember->first() ? auth()->user()->linkedMember->first()->gender : ' ' }}</li>
                                     <li class="list-group-item border-0 ps-0 text-sm"><strong
                                             class="text-dark">Movil:</strong> &nbsp; {{ auth()->user()->phone }}</li>
                                     <li class="list-group-item border-0 ps-0 text-sm"><strong
                                             class="text-dark">Email:</strong> &nbsp; {{ auth()->user()->email }} </li>
                                     <li class="list-group-item border-0 ps-0 text-sm"><strong
-                                            class="text-dark">Ubicación:</strong> &nbsp; {{ auth()->user()->linkedMember->first()->location }}
+                                            class="text-dark">Ubicación:</strong> &nbsp; {{ auth()->user()->linkedMember->first() ? auth()->user()->linkedMember->first()->location : '' }}
                                     </li>
                                     {{-- <li class="list-group-item border-0 ps-0 pb-0">
                                         <strong class="text-dark text-sm">Social:</strong> &nbsp;

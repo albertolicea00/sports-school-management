@@ -1,4 +1,7 @@
 <div class="">
+    @if (session()->has('message'))
+        <div class="alert alert-success">{{ session('message') }}</div>
+    @endif
     <!-- Navbar -->
     <!-- End Navbar -->
     <div class="container-fluid py-4">
@@ -8,7 +11,7 @@
                     <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                         <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3 d-flex justify-content-between align-items-center">
                             <h2 class="text-white text-capitalize ps-3">Mis entrenadores</h2>
-                            <button type="button" id="new-my-trainer" class="btn btn-light mt-1" style="margin-right: 2em;">NUEVO ENTRENADOR</button>
+                            @include('livewire.account.template.create-trainer')
                         </div>
                     </div>
                     <div class="card-body px-0 pb-2">
@@ -246,37 +249,4 @@
     </div>
 </div>
 
-@push('js')
-<script wire:ignore>
-    document.getElementById('new-my-trainer').addEventListener('click', function(){
-        Swal.fire({
-                title: 'Mi nuevo ENTRENADOR',
-                html: `<div class="px-2">
-                    <div class="input-group input-group-outline my-3">
-                        <label class="form-label">Nombre</label>
-                        <input wire:model="name" type="text" class="form-control" name="name" id="swal-name" required>
-                    </div>
-                    <div class="input-group input-group-outline my-3">
-                        <label class="form-label">Teléfono</label>
-                        <input type="tel" class="form-control" name="phone" id="swal-phone" required>
-                    </div>
-                    <div class="input-group input-group-outline my-3">
-                        <label class="form-label">Email</label>
-                        <input type="email" class="form-control" name="email" id="swal-email" required>
-                    </div>
-                    <div class="input-group input-group-outline my-3">
-                        <label class="form-label">Ubicación</label>
-                        <input type="text" class="form-control" name="location" id="swal-location" required>
-                    </div>
-                </div>`,
-                showCancelButton: true,
-                confirmButtonText: 'Guardar',
-                cancelButtonText: 'Cancelar',
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    // falta
-                }
-            });
-        });
-</script>
-@endpush
+
