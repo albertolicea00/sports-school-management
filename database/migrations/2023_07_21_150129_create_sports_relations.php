@@ -11,17 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('coaches', function (Blueprint $table) {
+        Schema::create('members_has_sports', function (Blueprint $table) {
             $table->id();
-
             $table->unsignedBigInteger('member_id');
+            $table->unsignedBigInteger('sport_id');
+            $table->float('exp_years')->nullable();
             $table->string('about')->nullable();
             $table->boolean('enable')->default(1);
-            // $table->json('states')->nullable();
             $table->json('meta')->nullable();
             $table->timestamps();
 
             $table->foreign('member_id')->references('id')->on('members')->constrained();
+            // ->onUpdate('cascade')
+            // ->onDelete('cascade');
+            $table->foreign('sport_id')->references('id')->on('sports')->constrained();
             // ->onUpdate('cascade')
             // ->onDelete('cascade');
         });
@@ -32,6 +35,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('coaches');
+        Schema::dropIfExists('members_has_sports');
     }
 };

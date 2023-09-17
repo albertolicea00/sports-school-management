@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CoachesHasAthletes extends Model
+class CoachesHasTeams extends Model
 {
     protected $fillable = [
         'athlete_id',

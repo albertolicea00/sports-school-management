@@ -2,10 +2,23 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Sport extends Model
 {
-    use HasFactory;
+    protected $fillable = [
+        'name',
+        'about',
+        'enable',
+        'meta',
+        'image',
+    ];
+
+    // Relaciones
+    public function members()
+    {
+        return $this->belongsToMany(Member::class, 'members_has_sports')
+            ->withPivot('exp_years', 'about', 'enable', 'meta')
+            ->withTimestamps();
+    }
 }
