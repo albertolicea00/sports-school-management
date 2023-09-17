@@ -15,7 +15,7 @@
 
                     <div class="input-group input-group-outline mt-3">
                         <label class="form-label fix-label-form" for="name" wire:ignore>Nombre</label>
-                        <input wire:model="name" type="text" onchange="{}" class="form-control mt-1" name="name" id="swal-name"
+                        <input wire:model="name" type="text" class="form-control mt-1" name="name" id="swal-name"
                             required>
                     </div>
                     @error('name')<p class="text-danger inputerror text-start">{{ $message }}</p>@enderror

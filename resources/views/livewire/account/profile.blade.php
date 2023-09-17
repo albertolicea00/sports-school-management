@@ -1,6 +1,6 @@
 <div>
     @if (session()->has('message'))
-        <div class="alert alert-success">{{ session('message') }}</div>
+        <div class="alert alert-success text-white">{{ session('message') }}</div>
     @endif
     <div class="container-fluid px-2 px-md-4">
         <div class="page-header min-height-300 border-radius-xl mt-4"
@@ -19,7 +19,7 @@
                 <div class="col-auto my-auto">
                     <div class="h-100">
                         <h5 class="mb-1">
-                            Admin | {{ auth()->user()->name }}
+                            {{ auth()->user()->getRoleNames()->first() }} | {{ auth()->user()->name }}
                         </h5>
                         <p class="mb-0 font-weight-normal text-md">
                             {{ auth()->user()->email }}
@@ -133,7 +133,7 @@
                                 <ul class="list-group">
                                     <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong
                                             class="text-dark">Nombre:</strong> &nbsp;
-                                            {{ auth()->user()->linkedMember->first() ? auth()->user()->linkedMember->first() : auth()->user()->name }}
+                                            {{ auth()->user()->linkedMember->first() ? auth()->user()->linkedMember->first()->name : auth()->user()->name }}
                                         </li>
                                     <li class="list-group-item border-0 ps-0 text-sm"><strong
                                             class="text-dark">Cumple:</strong> &nbsp;
@@ -147,7 +147,7 @@
                                     <li class="list-group-item border-0 ps-0 text-sm"><strong
                                             class="text-dark">Email:</strong> &nbsp; {{ auth()->user()->email }} </li>
                                     <li class="list-group-item border-0 ps-0 text-sm"><strong
-                                            class="text-dark">Ubicación:</strong> &nbsp; {{ auth()->user()->linkedMember->first() ? auth()->user()->linkedMember->first()->location : '' }}
+                                            class="text-dark">Ubicación:</strong> &nbsp; {{ 'Cuba' }}
                                     </li>
                                     {{-- <li class="list-group-item border-0 ps-0 pb-0">
                                         <strong class="text-dark text-sm">Social:</strong> &nbsp;
