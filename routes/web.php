@@ -28,7 +28,9 @@ use App\Http\Livewire\Account\Players as MyPlayers;
 use App\Http\Livewire\Account\Trainers as MyTrainers;
 use App\Http\Livewire\Account\Tasks as MyTasks;
 
-use App\Http\Livewire\Management\Players\AllPlayers;
+use App\Http\Livewire\Management\Memebers\AllPlayers;
+use App\Http\Livewire\Management\Memebers\AllTrainers;
+use App\Http\Livewire\Management\Memebers\AllInstructors;
 
 use App\Http\Livewire\Management\Users\AllUsers;
 use App\Http\Livewire\Management\Users\RolesPermissions\AllPermissions;
@@ -101,6 +103,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('my-tasks', MyTasks::class)->name('my-tasks');
 
     Route::get('players-management', AllPlayers::class)->name('players-management');
+    Route::get('trainer-management', AllTrainers::class)->name('trainer-management');
+    Route::get('instructor-management', AllInstructors::class)->name('instructor-management');
+
     Route::get('users-management', AllUsers::class)->name('users-management');
     Route::get('permissions-management', AllPermissions::class)->name('permissions-management');
     Route::get('roles-management', AllRoles::class)->name('roles-management');
@@ -137,4 +142,3 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/help/{section?}', Help::class)->name('help');
     Route::get('{section?}/help', Help::class)->name('help');
 });
-    

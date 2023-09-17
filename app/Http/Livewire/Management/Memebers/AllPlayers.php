@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Management\Players;
+namespace App\Http\Livewire\Management\Memebers;
 
 use Livewire\Component;
 
