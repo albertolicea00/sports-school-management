@@ -8,8 +8,5 @@ import './help_messages.js';
 
 
 
-
-
-
 // global functions
 window.copyToClipboard = app.copyToClipboard;

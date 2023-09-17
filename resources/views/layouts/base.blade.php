@@ -79,7 +79,6 @@
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
         <!--   Core JS Files   -->
-        <script type="module"  src="{{ asset('assets') }}/js/custom/app.js"></script>
         <script src="{{ asset('assets') }}/js/core/popper.min.js"></script>
         <script src="{{ asset('assets') }}/js/core/bootstrap.min.js"></script>
         <script src="{{ asset('assets') }}/js/plugins/perfect-scrollbar.min.js"></script>
@@ -94,11 +93,12 @@
                 Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
             }
 
-        </script>
+            </script>
         <!-- Github buttons -->
         <script async defer src="https://buttons.github.io/buttons.js"></script>
         <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
         <script src="{{ asset('assets') }}/js/material-dashboard.min.js?v=3.0.0"></script>
         @livewireScripts
+        <script type="module"  src="{{ asset('assets') }}/js/custom/app.js"></script>
     </body>
 </html>
