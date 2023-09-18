@@ -14,11 +14,16 @@ return new class extends Migration
         Schema::create('coaches', function (Blueprint $table) {
             $table->id();
 
+            $table->unsignedBigInteger('member_id');
             $table->string('about')->nullable();
             $table->boolean('enable')->default(1);
             // $table->json('states')->nullable();
             $table->json('meta')->nullable();
             $table->timestamps();
+
+            $table->foreign('member_id')->references('id')->on('members')->constrained();
+            // ->onUpdate('cascade')
+            // ->onDelete('cascade');
         });
     }
 

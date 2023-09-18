@@ -15,7 +15,6 @@ class Member extends Model
         'name',
         'birth_date',
         'gender',
-        // 'title_id',
         'about',
         'enable',
         // 'states',
@@ -32,6 +31,33 @@ class Member extends Model
             ->withPivot('meta')
             ->withTimestamps();
             // ->first();
+    }
+
+    public function athletes()
+    {
+        return $this->hasMany(Athlete::class);
+    }
+
+    public function coaches()
+    {
+        return $this->hasMany(Coach::class);
+    }
+
+    public function instructors()
+    {
+        return $this->hasMany(Instructor::class);
+    }
+
+    public function sports()
+    {
+        return $this->belongsToMany(Sport::class, 'members_has_sports')
+            ->withPivot('exp_years', 'about', 'enable', 'meta')
+            ->withTimestamps();
+    }
+
+    public function addresses()
+    {
+        return $this->hasMany(MemberAddress::class);
     }
 
 }

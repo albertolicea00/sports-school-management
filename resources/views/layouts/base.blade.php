@@ -20,30 +20,29 @@
         <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('assets') }}/img/apple-icon.png">
         <link rel="icon" type="image/png" href="{{ asset('assets') }}/img/favicon.png">
         <title>
-            Material Dashboard 2 by Creative Tim & UPDIVISION
+            Gestión docente al deporte cubano
         </title>
 
         <!-- Metas -->
-        @if (env('IS_DEMO'))
-            <meta name="keywords" content="creative tim, updivision, material, html dashboard, laravel, livewire, laravel livewire, alpine.js, html css dashboard laravel, material dashboard laravel, livewire material dashboard, material admin, livewire dashboard, livewire admin, web dashboard, bootstrap 5 dashboard laravel, bootstrap 5, css3 dashboard, bootstrap 5 admin laravel, material dashboard bootstrap 5 laravel, frontend, responsive bootstrap 5 dashboard, material dashboard, material laravel bootstrap 5 dashboard" />
-            <meta name="description" content="Dozens of handcrafted UI components, Laravel authentication, register & profile editing, Livewire & Alpine.js" />
-            <meta itemprop="name" content="Material Dashboard 2 Laravel Livewire by Creative Tim & UPDIVISION" />
-            <meta itemprop="description" content="Dozens of handcrafted UI components, Laravel authentication, register & profile editing, Livewire & Alpine.js" />
-            <meta itemprop="image" content="https://s3.amazonaws.com/creativetim_bucket/products/600/original/material-dashboard-laravel-livewire.jpg" />
-            <meta name="twitter:card" content="product" />
-            <meta name="twitter:site" content="@creativetim" />
-            <meta name="twitter:title" content="Material Dashboard 2 Laravel Livewire by Creative Tim & UPDIVISION" />
-            <meta name="twitter:description" content="Dozens of handcrafted UI components, Laravel authentication, register & profile editing, Livewire & Alpine.js" />
-            <meta name="twitter:creator" content="@creativetim" />
-            <meta name="twitter:image" content="https://s3.amazonaws.com/creativetim_bucket/products/600/original/material-dashboard-laravel-livewire.jpg" />
-            <meta property="fb:app_id" content="655968634437471" />
-            <meta property="og:title" content="Material Dashboard 2 Laravel Livewire by Creative Tim & UPDIVISION" />
-            <meta property="og:type" content="article" />
-            <meta property="og:url" content="https://www.creative-tim.com/live/material-dashboard-laravel-livewire" />
-            <meta property="og:image" content="https://s3.amazonaws.com/creativetim_bucket/products/600/original/material-dashboard-laravel-livewire.jpg" />
-            <meta property="og:description" content="Dozens of handcrafted UI components, Laravel authentication, register & profile editing, Livewire & Alpine.js" />
-            <meta property="og:site_name" content="Creative Tim" />
-        @endif
+        <meta name="keywords" content="deportes cubanos, análisis deportivo, docencia deportiva, gestión deportiva, Cuba, entrenamiento deportivo, educación física" />
+        <meta name="description" content="Página web dedicada a la gestión y análisis de la docencia de los deportes cubanos. Encuentra recursos educativos y herramientas de análisis relacionadas con el deporte en Cuba." />
+        <meta itemprop="name" content="Gestión y Análisis de la Docencia de Deportes Cubanos" />
+        <meta itemprop="description" content="Recursos educativos, herramientas de análisis relacionadas con el deporte en Cuba." />
+        {{-- <meta itemprop="image" content="URL_DE_LA_IMAGEN_REPRESENTATIVA_DE_LA_PAGINA" /> --}}
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@TuUsuarioDeTwitter" />
+        <meta name="twitter:title" content="Gestión y Análisis de la Docencia de Deportes Cubanos" />
+        <meta name="twitter:description" content="Recursos educativos, herramientas de análisis relacionadas con el deporte en Cuba." />
+        <meta name="twitter:image" content="URL_DE_LA_IMAGEN_REPRESENTATIVA_DE_LA_PAGINA" />
+        <meta property="og:title" content="Gestión y Análisis de la Docencia de Deportes Cubanos" />
+        <meta property="og:type" content="website" />
+        {{-- <meta property="og:url" content="URL_DE_LA_PAGINA_WEB" /> --}}
+        {{-- <meta property="og:image" content="URL_DE_LA_IMAGEN_REPRESENTATIVA_DE_LA_PAGINA" /> --}}
+        <meta property="og:description" content="Recursos educativos, herramientas de análisis relacionadas con el deporte en Cuba." />
+        <meta property="og:site_name" content="Gestión docente al deporte cubano" />
+
+
+
         <!--     Fonts and icons     -->
         <link rel="stylesheet" type="text/css"href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
         <link href="https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&display=swap" rel="stylesheet">
@@ -80,7 +79,6 @@
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
         <!--   Core JS Files   -->
-        <script type="module"  src="{{ asset('assets') }}/js/custom/app.js"></script>
         <script src="{{ asset('assets') }}/js/core/popper.min.js"></script>
         <script src="{{ asset('assets') }}/js/core/bootstrap.min.js"></script>
         <script src="{{ asset('assets') }}/js/plugins/perfect-scrollbar.min.js"></script>
@@ -95,11 +93,12 @@
                 Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
             }
 
-        </script>
+            </script>
         <!-- Github buttons -->
         <script async defer src="https://buttons.github.io/buttons.js"></script>
         <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
         <script src="{{ asset('assets') }}/js/material-dashboard.min.js?v=3.0.0"></script>
         @livewireScripts
+        <script type="module"  src="{{ asset('assets') }}/js/custom/app.js"></script>
     </body>
 </html>

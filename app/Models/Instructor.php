@@ -2,17 +2,26 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Instructor extends Model
 {
-    use HasFactory;
-
     protected $fillable = [
+        'member_id',
+        'instructor_type_id',
         'about',
         'enable',
-        // 'states',
         'meta',
     ];
+
+    // Relaciones
+    public function member()
+    {
+        return $this->belongsTo(Member::class);
+    }
+
+    public function instructorType()
+    {
+        return $this->belongsTo(InstructorsType::class);
+    }
 }

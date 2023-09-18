@@ -17,25 +17,29 @@
                 <div class="px-2">
 
                     <div class="input-group input-group-outline mt-3">
-                        <label class="form-label" for="name" wire:ignore>Nombre</label>
+                        <label class="form-label fix-label-form" for="name" wire:ignore>Nombre :</label>
                         <input wire:model="name" type="text" class="form-control" name="name" id="swal-name" required>
                     </div>
                     @error('name')<p class="text-danger inputerror text-start">{{ $message }}</p>@enderror
-                    <div class="input-group input-group-outline mt-3">
-                        <label class="form-label" for="phone" wire:ignore>Teléfono</label>
+
+                    <div class="input-group input-group-outline mt-4">
+                        <label class="form-label fix-label-form" for="phone" wire:ignore>Teléfono :</label>
                         <input wire:model="phone" type="tel" class="form-control" name="phone" id="swal-phone" required>
                     </div>
                     @error('phone')<p class="text-danger inputerror text-start">{{ $message }}</p>@enderror
-                    <div class="input-group input-group-outline mt-3">
-                        <label class="form-label" for="email" wire:ignore>Email</label>
+
+                    <div class="input-group input-group-outline mt-4">
+                        <label class="form-label fix-label-form" for="email" wire:ignore>Email :</label>
                         <input wire:model="email" type="email" class="form-control" name="email" id="swal-email"required>
                     </div>
                     @error('email')<p class="text-danger inputerror text-start">{{ $message }}</p>@enderror
-                    <div class="input-group input-group-outline mt-3">
-                        <label class="form-label" for="location" wire:ignore>Ubicación</label>
+
+                    {{-- <div class="input-group input-group-outline mt-4">
+                        <label class="form-label fix-label-form" for="location" wire:ignore>Ubicación</label>
                         <input wire:model="location" type="text" class="form-control" name="location" id="swal-location"required>
                     </div>
-                    @error('location')<p class="text-danger inputerror text-start">{{ $message }}</p>@enderror
+                    @error('location')<p class="text-danger inputerror text-start">{{ $message }}</p>@enderror --}}
+
                 </div>
             </div>
             <div class="modal-footer">

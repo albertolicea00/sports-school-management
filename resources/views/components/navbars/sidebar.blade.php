@@ -6,7 +6,7 @@
             aria-hidden="true" id="iconSidenav"></i>
             <a class="navbar-brand m-0 d-flex text-wrap align-items-center" href=" {{ route('dashboard') }} ">
                 <img src="{{ asset('assets') }}/img/logo-ct.png" class="navbar-brand-img h-100" alt="main_logo">
-                <span class="ms-2 font-weight-bold text-white">Logo o marca de la applicacion web</span>
+                <span class="ms-2 font-weight-bold text-white">Gestión docente al DEPORTE CUBANO</span>
             </a>
     </div>
     <hr class="horizontal light mt-0 mb-2">
@@ -101,7 +101,25 @@
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i style="font-size: 1rem;" class="fas fa-lg fa-running ps-2 pe-2 text-center"></i>
                     </div>
-                    <span class="nav-link-text ms-0">Gestión de atletas</span>
+                    <span class="nav-link-text ms-0">Todos los atletas</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white {{ Route::currentRouteName() == 'trainer-management' ? 'active bg-gradient-primary' : '' }}"
+                    href="{{ route('trainer-management') }}">
+                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i style="font-size: 1rem;" class="fas fa-lg fa-running ps-2 pe-2 text-center"></i>
+                    </div>
+                    <span class="nav-link-text ms-0">Todos los entrenadores</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white {{ Route::currentRouteName() == 'instructor-management' ? 'active bg-gradient-primary' : '' }}"
+                    href="{{ route('instructor-management') }}">
+                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i style="font-size: 1rem;" class="fas fa-lg fa-running ps-2 pe-2 text-center"></i>
+                    </div>
+                    <span class="nav-link-text ms-0">Todos los instructores</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -110,7 +128,7 @@
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i style="font-size: 1rem;" class="fas fa-users-cog ps-1 pe-1 text-center"></i>
                     </div>
-                    <span class="nav-link-text ms-0">Gestión de usuarios</span>
+                    <span class="nav-link-text ms-0">Usuarios</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -137,7 +155,7 @@
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i style="font-size: 1rem;" class="fas fa-lg fa-volleyball-ball ps-1 pe-1 text-center"></i>
                     </div>
-                    <span class="nav-link-text ms-0">Gestión de deportes</span>
+                    <span class="nav-link-text ms-0">Todos los deportes</span>
                 </a>
             </li>
 {{----------------------------------------------------------------------------------------------------------------------------}}
@@ -204,8 +222,8 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white 
-                {{ substr(Route::currentRouteName(), -4)  == 'help' || substr(Route::currentRouteName(), 4)  == 'help' 
+                <a class="nav-link text-white
+                {{ substr(Route::currentRouteName(), -4)  == 'help' || substr(Route::currentRouteName(), 4)  == 'help'
                     ? ' active bg-gradient-primary' : '' }}  "
                     href="{{ route('help') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">

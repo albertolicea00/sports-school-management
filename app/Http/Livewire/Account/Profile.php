@@ -20,6 +20,19 @@ class Profile extends Component
         $this->reset();
         $this->resetValidation();
     }
+
+    public function updatedEditMode()
+    {
+        if ($this->edit_mode){
+            $this->name = auth()->user()->linkedMember->first() ? auth()->user()->linkedMember->first()->name : auth()->user()->name ;
+            $this->phone = auth()->user()->phone;
+            $this->email = auth()->user()->email;
+            $this->gender = null;
+            $this->birth = null;
+            $this->location = null;
+        }
+    }
+
     public function render()
     {
         return view('livewire.account.profile');
@@ -28,17 +41,17 @@ class Profile extends Component
     {
         $this->validate([
             'name' => 'required|string|max:255',
-            'phone' => 'required|numeric',
+            'phone' => 'required',
             'email' => 'required|email|max:155',
-            'gender' => 'required|in:M,F',
-            'birth' => 'required|date',
-            'location' => 'required|string|max:255',
+            // 'gender' => 'required|in:M,F',
+            // 'birth' => 'required|date',
+            // 'location' => 'required|string|max:255',
         ], [
             'required' => 'El campo es obligatorio.',
             'string' => 'El campo debe ser una cadena de caracteres.',
             'max' => 'El campo no debe superar :max caracteres.',
             'email' => 'El campo debe ser una dirección de correo electrónico válida.',
-            'numeric' => 'El campo debe ser un número.',
+            'phone' => 'El campo debe ser un número telefónico.',
             'in' => 'El campo debe ser uno de los siguientes valores: :values.',
             'date' => 'El campo debe ser una fecha válida.'
         ]);
@@ -59,8 +72,8 @@ class Profile extends Component
                 if ($member) {
                     $member->update([
                         'name' => $this->name,
-                        'gender' => $this->gender,
-                        'birth_date' => $this->birth,
+                        // 'gender' => $this->gender,
+                        // 'birth_date' => $this->birth,
                     ]);
                 }
             } else {

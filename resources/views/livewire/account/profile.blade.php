@@ -1,13 +1,12 @@
 <div>
     @if (session()->has('message'))
-        <div class="alert alert-success">{{ session('message') }}</div>
+        <div class="alert alert-success text-white">{{ session('message') }}</div>
     @endif
     <div class="container-fluid px-2 px-md-4">
         <div class="page-header min-height-300 border-radius-xl mt-4"
-            style="background-image: url('https://images.unsplash.com/photo-1531512073830-ba890ca4eba2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');">
-            <span class="mask  bg-gradient-primary  opacity-2"></span>
-            <h1 class="text-center text-white" style="width: 20em;margin: auto;">Bienvenido de vuleta &nbsp;{{
-                auth()->user()->type }}</h1>
+            style="background-image: url('{{ asset('assets') }}/img/profile-default-bg.jpg');">
+            <span class="mask  bg-gradient-dark  opacity-4"></span>
+            <h1 class="text-center text-white" style="width: 20em;margin: auto;">Bienvenido de vuelta &nbsp;{{auth()->user()->name }}</h1>
         </div>
         <div class="card card-body mx-3 mx-md-4 mt-n6">
             <div class="row gx-4 mb-2">
@@ -20,7 +19,7 @@
                 <div class="col-auto my-auto">
                     <div class="h-100">
                         <h5 class="mb-1">
-                            Admin | {{ auth()->user()->name }}
+                            {{ auth()->user()->getRoleNames()->first() }} | {{ auth()->user()->name }}
                         </h5>
                         <p class="mb-0 font-weight-normal text-md">
                             {{ auth()->user()->email }}
@@ -134,7 +133,7 @@
                                 <ul class="list-group">
                                     <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong
                                             class="text-dark">Nombre:</strong> &nbsp;
-                                            {{ auth()->user()->linkedMember->first() ? auth()->user()->linkedMember->first() : auth()->user()->name }}
+                                            {{ auth()->user()->linkedMember->first() ? auth()->user()->linkedMember->first()->name : auth()->user()->name }}
                                         </li>
                                     <li class="list-group-item border-0 ps-0 text-sm"><strong
                                             class="text-dark">Cumple:</strong> &nbsp;
@@ -148,7 +147,7 @@
                                     <li class="list-group-item border-0 ps-0 text-sm"><strong
                                             class="text-dark">Email:</strong> &nbsp; {{ auth()->user()->email }} </li>
                                     <li class="list-group-item border-0 ps-0 text-sm"><strong
-                                            class="text-dark">Ubicación:</strong> &nbsp; {{ auth()->user()->linkedMember->first() ? auth()->user()->linkedMember->first()->location : '' }}
+                                            class="text-dark">Ubicación:</strong> &nbsp; {{ 'Cuba' }}
                                     </li>
                                     {{-- <li class="list-group-item border-0 ps-0 pb-0">
                                         <strong class="text-dark text-sm">Social:</strong> &nbsp;

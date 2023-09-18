@@ -11,6 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::create('member_types', function (Blueprint $table) {
+            $table->id();
+            $table->string('model')->unique();
+            $table->string('table')->unique();
+            $table->string('route')->unique();
+            $table->string('visual_name_s');
+            $table->string('visual_name_p');
+            $table->string('icon');
+            $table->string('color');
+            $table->boolean('enable')->default(1);
+            $table->timestamps();
+        });
+
         Schema::create('members', function (Blueprint $table) {
             $table->id();
             $table->string('dni');
@@ -18,7 +31,6 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->date('birth_date')->nullable();
             $table->string('gender')->nullable();
-            // $table->unsignedBigInteger('title_id')->nullable();
             $table->string('about')->nullable();
             $table->boolean('enable')->default(1);
             // $table->json('states')->nullable();
@@ -32,6 +44,7 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::dropIfExists('member_types');
         Schema::dropIfExists('members');
     }
 };

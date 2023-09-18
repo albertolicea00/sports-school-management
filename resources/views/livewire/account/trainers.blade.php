@@ -1,6 +1,6 @@
 <div class="">
     @if (session()->has('message'))
-        <div class="alert alert-success">{{ session('message') }}</div>
+        <div class="alert alert-success text-white">{{ session('message') }}</div>
     @endif
     <!-- Navbar -->
     <!-- End Navbar -->

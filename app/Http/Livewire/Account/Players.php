@@ -10,8 +10,6 @@ class Players extends Component
 {
     public $createMode = false;
     public $name, $lastName, $age, $dni, $gender, $birth, $location, $skinColor, $expeYears;
-    // public $name, $age;
-
 
     public function render()
     {
@@ -20,8 +18,6 @@ class Players extends Component
 
     public function exitcreateMode()
     {
-        Log::info('cerrando modal');
-
         $this->createMode = false;
         $this->reset();
         $this->resetValidation();
@@ -51,16 +47,13 @@ class Players extends Component
 
         ]);
 
-        session()->flash('Deberia haberse cerrado');
         $this->createMode = false;
 
         try {
             DB::beginTransaction();
 
 
-            // .. 
 
-            Log::info('Mermelada');
             DB::commit(); // Confirma la transacción
             session()->flash('message', 'Nuevo Atleta creado con éxito.');
             Log::info('Conqueso');
