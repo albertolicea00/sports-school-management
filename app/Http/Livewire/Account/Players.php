@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Log;
 class Players extends Component
 {
     public $createMode = false;
-    public $name, $lastName, $age, $dni, $gender, $birth, $location, $skinColor, $expeYears;
+    public $name, $dni, $gender, $location, $skinColor, $expeYears;
 
     public function render()
     {
@@ -21,6 +21,7 @@ class Players extends Component
         $this->createMode = false;
         $this->reset();
         $this->resetValidation();
+        $this->gender = 'M';
     }
     public function crearAtleta()
     {
@@ -56,11 +57,9 @@ class Players extends Component
 
             DB::commit(); // Confirma la transacción
             session()->flash('message', 'Nuevo Atleta creado con éxito.');
-            Log::info('Conqueso');
         } catch (\Throwable $th) {
             DB::rollBack(); // Revierte la transacción en caso de error
             session()->flash('message', 'Error al crear el atleta.');
         }
     }
 }
-
