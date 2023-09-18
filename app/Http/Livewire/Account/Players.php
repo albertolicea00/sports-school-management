@@ -64,4 +64,3 @@ class Players extends Component
     }
 }
 
-jaj
