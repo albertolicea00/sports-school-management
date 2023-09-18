@@ -37,7 +37,7 @@
                     @error('age')<p class="text-danger inputerror text-start">{{ $message }}</p>@enderror
 
                     <div class="input-group input-group-outline mt-4">
-                        <label class="form-label fix-label-form" for="dni" wire:ignore>Dni</label>
+                        <label class="form-label fix-label-form" for="dni" wire:ignore>Carnet</label>
                         <input wire:model="dni" type="text" class="form-control mt-1" name="dni" id="swal-dni" required>
                     </div>
                     @error('dni')<p class="text-danger inputerror text-start">{{ $message }}</p>@enderror
