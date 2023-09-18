@@ -58,7 +58,7 @@ use App\Http\Livewire\Bankdata\Players\Database1518;
 |
 */
 
-Route::get('/', function(){
+Route::get('/', function () {
     return redirect('sign-in');
 });
 
@@ -74,14 +74,16 @@ Route::get('sign-in', Login::class)->middleware('guest')->name('login');
 
 
 
-Route::get('user-profile', UserProfile::class)->middleware('auth')->name('user-profile');
-Route::get('user-management', UserManagement::class)->middleware('auth')->name('user-management');
+
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('static-sign-in', StaticSignIn::class)->name('static-sign-in');
     Route::get('static-sign-up', StaticSignUp::class)->name('static-sign-up');
     // Route::get('billing', Billing::class)->name('billing');
     // Route::get('rtl', RTL::class)->name('rtl');
+
+    Route::get('user-profile', UserProfile::class)->middleware('auth')->name('user-profile');
+    Route::get('user-management', UserManagement::class)->middleware('auth')->name('user-management');
 
 
 
@@ -117,22 +119,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('database-1012', Database1012::class)->name('database-1012');
     Route::get('database-1315', Database1315::class)->name('database-1315');
     Route::get('database-1518', Database1518::class)->name('database-1518');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 });
 
 

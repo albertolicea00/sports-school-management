@@ -30,7 +30,7 @@ class Member extends Model
         return $this->belongsToMany(User::class, 'user_link_members', 'member_id', 'user_id')
             ->withPivot('meta')
             ->withTimestamps();
-            // ->first();
+        // ->first();
     }
 
     public function athletes()
@@ -59,5 +59,4 @@ class Member extends Model
     {
         return $this->hasMany(MemberAddress::class);
     }
-
 }
