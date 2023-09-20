@@ -11,6 +11,37 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // cities TABLE
+        Schema::create('cities', function (Blueprint $table) {
+            $table->id();
+            $table->string("name");
+            $table->unsignedBigInteger("state_id");
+            $table->string("state_code")->nullable();
+            $table->string("state_name")->nullable();
+            $table->unsignedBigInteger("country_id");
+            $table->string("country_code")->nullable();
+            $table->string("country_name")->nullable();
+            $table->string("latitude")->nullable();
+            $table->string("longitude")->nullable();
+            $table->string("wikiDataId")->nullable();
+            $table->boolean("enable")->default(1);
+            $table->timestamps();
+        });
+        // states TABLE
+        Schema::create('states', function (Blueprint $table) {
+            $table->id();
+            $table->string("name");
+            $table->unsignedBigInteger("country_id");
+            $table->string("country_code")->nullable();
+            $table->string("country_name")->nullable();
+            $table->string("state_code")->nullable();
+            $table->string("type")->nullable();
+            $table->string("latitude")->nullable();
+            $table->string("longitude")->nullable();
+            $table->boolean("enable")->default(1);
+            $table->timestamps();
+        });
+        // countries TABLE
         Schema::create('countries', function (Blueprint $table) {
             $table->id('id');
             $table->string("name");
@@ -42,6 +73,8 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::dropIfExists('cities');
+        Schema::dropIfExists('states');
         Schema::dropIfExists('countries');
     }
 };
