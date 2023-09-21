@@ -72,47 +72,44 @@ class AllTrainers extends Component
 
         $this->CreateMode = false;
 
-        // try {
-        //     DB::beginTransaction(); // Inicia la transacción
-        $member = Members::create([
-            'dni' => $this->dni,
-            'name' => $this->full_name,
-            'birth_date' => $this->birth_date,
-            'gender' => $this->gender == 'M' ? 'Masculino' : 'Femenino',
-        ]);
-        $address = $member->addresses()->create([
-            'city_id' => $this->city_id,
-            'state_id' => $this->state_id,
-            'location' => $this->location,
-            'zip_code' => $this->zip_code,
-        ]);
+        try {
+            DB::beginTransaction(); // Inicia la transacción
+            $member = Members::create([
+                'dni' => $this->dni,
+                'name' => $this->full_name,
+                'birth_date' => $this->birth_date,
+                'gender' => $this->gender == 'M' ? 'Masculino' : 'Femenino',
+            ]);
+            $address = $member->addresses()->create([
+                'city_id' => $this->city_id,
+                'state_id' => $this->state_id,
+                'location' => $this->location,
+                'zip_code' => $this->zip_code,
+            ]);
 
-        $coach = $member->coaches()->create([]);
+            $coach = $member->coaches()->create([]);
 
-        $sport = $member->sports()->create([
-            'exp_years' => $this->exp_years,
-        ]);
+            $sport = $coach->sports()->attach($this->sport_id);
 
 
-        $school_grade = $coach->schoolGrades()->create([
-            'name' => $this->school_grades,
-        ]);
+            $school_grade = $coach->schoolGrades()->attach($this->school_grade_id);
 
 
-        $this->reset();
+            $this->reset();
 
 
-        DB::commit(); // Confirma la transacción
+            DB::commit(); // Confirma la transacción
 
-        $this->dispatchBrowserEvent('show-created-message', [
-            'object' => 'ENTRENADOR',
-            'target' => $member->name,
-        ]);
-        // } catch (\Throwable $th) {
-        // DB::rollBack(); // Revierte la transacción en caso de error
-        // $this->dispatchBrowserEvent('ddbb-error', [
-        // 'message' => $this->error_message,
-        // 'redirect' => '\trainer-management',
-        // ]);
+            $this->dispatchBrowserEvent('show-created-message', [
+                'object' => 'ENTRENADOR',
+                'target' => $member->name,
+            ]);
+        } catch (\Throwable $th) {
+            DB::rollBack(); // Revierte la transacción en caso de error
+            $this->dispatchBrowserEvent('ddbb-error', [
+                'message' => $this->error_message,
+                'redirect' => '\trainer-management',
+            ]);
+        }
     }
 }
