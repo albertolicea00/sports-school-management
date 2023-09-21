@@ -17,6 +17,9 @@ return new class extends Migration
             $table->string('table');
             $table->string('model');
             $table->unsignedBigInteger('model_id');
+            $table->string('icon');
+            $table->string('name_s');
+            $table->string('name_p');
 
             $table->foreign('sport_id')->references('id')->on('sports')->constrained();
             // ->onUpdate('cascade')
