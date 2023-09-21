@@ -35,7 +35,7 @@
                         </div>
                         <ul class="list-group list-group-flush">
                             {{-- <li class="list-group-item">0 Entrenadores</li> --}}
-                            <li class="list-group-item">{{ count($sport->members) }} Atletas</li>
+                            {{-- <li class="list-group-item">{{ count($sport->members) }} Atletas</li> --}}
                             <li class="list-group-item">0 Equipos</li>
                         </ul>
                     </div>

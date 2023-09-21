@@ -177,7 +177,7 @@ class AllSports extends Component
     {
         $sport = Sports::findOrFail($this->id_to_delete);
         $sport->update(['enable' => false]);
-        $this->id_to_delete = null;
+        // $this->id_to_delete = null;
         $this->getSports();
         $this->dispatchBrowserEvent('show-deleted-message', [
             'object' => 'DEPORTE',
