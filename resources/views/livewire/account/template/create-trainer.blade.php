@@ -92,7 +92,7 @@
 
 
                     <div class="input-group input-group-outline mt-4">
-                        <label class="form-label fix-label-form" for="exp_years" wire:ignore>Años de Experiencia
+                        <label class="form-label fix-label-form" for="exp_years" wire:ignore>Años de experiencia
                             :</label>
                         <input wire:model="exp_years" type="number" class="form-control" name="exp_years"
                             id="swal-exp_years" required>

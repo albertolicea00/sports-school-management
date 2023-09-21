@@ -26,6 +26,7 @@ class RolesSeeder extends Seeder
         Role::create(['name' => 'Presidente de la Federación']);
         Role::create(['name' => 'Comisionado Nacional']);
         Role::create(['name' => 'Metodologo Nacional']);
+        // por deporte
         Role::create(['name' => 'Jefe de Cátedra de la Selección Nacional']);
         Role::create(['name' => 'Metodologo provinciales']);
         Role::create(['name' => 'Jefes de Cátedra de centros provincial']);
@@ -37,7 +38,5 @@ class RolesSeeder extends Seeder
         // TEST
         Role::create(['name' => 'Guest']);
         Role::create(['name' => 'Atleta']);
-
-
     }
 }

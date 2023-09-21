@@ -37,7 +37,7 @@
                     @error('age')<p class="text-danger inputerror text-start">{{ $message }}</p>@enderror
 
                     <div class="input-group input-group-outline mt-4">
-                        <label class="form-label fix-label-form" for="dni" wire:ignore>Dni</label>
+                        <label class="form-label fix-label-form" for="dni" wire:ignore>Carnet</label>
                         <input wire:model="dni" type="text" class="form-control mt-1" name="dni" id="swal-dni" required>
                     </div>
                     @error('dni')<p class="text-danger inputerror text-start">{{ $message }}</p>@enderror
@@ -48,7 +48,7 @@
                         <label class="form-label fix-label-form" for="gender" wire:ignore>Sexo :</label>
                         <div class="form-check d-inline p-0">
                             <input class="form-check-input" type="radio" name="gender_m" id="gender_m" checked
-                                wire:model='gender' value="M">
+                                wire:model='gender' value="M" >
                             <label class="custom-control-label" for="gender_m">Masculino</label>
                         </div>
                         <div class="form-check d-inline">

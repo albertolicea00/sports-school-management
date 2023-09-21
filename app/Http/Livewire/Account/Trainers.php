@@ -43,7 +43,8 @@ class Trainers extends Component
     {
         $this->validate([
             'dni' => 'required|string|max:255',
-            'full_name' => 'required|string|max:255',
+            // 'full_name' => 'required|alpha|regex:/^[a-zA-Z]+$/|max:100|',
+            'full_name' => 'required|string|max:100',
             'gender' => 'required|string|max:1',
             'birth_date' => 'required|date',
             'location' => 'required|string',
