@@ -9,7 +9,14 @@
             <div class="col-12">
                 <div class="d-flex justify-content-between align-items-center">
                     <div> @include('livewire.management.trainers.template.views') </div>
-                    <div> @include('livewire.management.trainers.template.create-trainer') </div>
+                    <div>
+                        @if ($can_restore)
+                        <button type="button" id="restore-my-trainer" class="btn btn-outline-primary mt-1 mx-2"
+                            wire:click="restoreCouch">RECUPERAR
+                        </button>
+                        @endif
+                        @include('livewire.management.trainers.template.create-trainer')
+                    </div>
                 </div>
 
                 <div class="card mb-4">
