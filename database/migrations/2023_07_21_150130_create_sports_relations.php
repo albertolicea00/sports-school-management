@@ -47,7 +47,7 @@ return new class extends Migration
         });
         Schema::create('coaches_has_sports', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('coache_id');
+            $table->unsignedBigInteger('coach_id');
             $table->unsignedBigInteger('sport_id');
             $table->float('exp_years')->nullable();
             $table->string('about')->nullable();
@@ -55,7 +55,7 @@ return new class extends Migration
             $table->json('meta')->nullable();
             $table->timestamps();
 
-            $table->foreign('coache_id')->references('id')->on('coaches')->constrained();
+            $table->foreign('coach_id')->references('id')->on('coaches')->constrained();
             // ->onUpdate('cascade')
             // ->onDelete('cascade');
             $table->foreign('sport_id')->references('id')->on('sports')->constrained();
