@@ -89,8 +89,12 @@ class AllTrainers extends Component
 
             $coach = $member->coaches()->create([]);
 
-            //$sport = $member->sports();
-            //school-grade
+            $sport = $coach->sports()->attach($this->sport_id);
+
+
+            $school_grade = $coach->schoolGrades()->attach($this->school_grade_id);
+
+
             $this->reset();
 
 
