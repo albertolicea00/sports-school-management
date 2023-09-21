@@ -11,20 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('members_has_sports', function (Blueprint $table) {
+        Schema::create('athetes_made_test_performance', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('member_id');
-            $table->unsignedBigInteger('sport_id');
-            $table->float('exp_years')->nullable();
+            $table->unsignedBigInteger('athlete_id');
+            $table->unsignedBigInteger('coach_id');
+            $table->float('made_at')->nullable();
+            $table->json('tests');
             $table->string('about')->nullable();
             $table->boolean('enable')->default(1);
             $table->json('meta')->nullable();
             $table->timestamps();
 
-            $table->foreign('member_id')->references('id')->on('members')->constrained();
+            $table->foreign('athlete_id')->references('id')->on('athletes')->constrained();
             // ->onUpdate('cascade')
             // ->onDelete('cascade');
-            $table->foreign('sport_id')->references('id')->on('sports')->constrained();
+            $table->foreign('coach_id')->references('id')->on('coaches')->constrained();
             // ->onUpdate('cascade')
             // ->onDelete('cascade');
         });
@@ -35,6 +36,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('members_has_sports');
+        Schema::dropIfExists('athetes_made_test_performance');
     }
 };
