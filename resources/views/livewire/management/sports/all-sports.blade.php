@@ -22,8 +22,7 @@
                             <h5 class="card-title d-flex justify-content-between">
                                 <span>{{ $sport->name }}</span>
                                 <div>
-                                    @include('livewire.management.sports.template.edit-sport', ['sport_id' =>
-                                    $sport->id])
+                                    @include('livewire.management.sports.template.edit-sport', ['sport_id' => $sport->id])
                                     @if (!$sport->meta || !json_decode($sport->meta)->seed)
                                     <span wire:click="askDeleteSport({{ $sport->id }})">
                                         <i title="ELIMINAR" class="fas fa-trash" style="font-size: .7em;"></i>
@@ -34,8 +33,8 @@
                             <p class="card-text">{{ $sport->about }}</p>
                         </div>
                         <ul class="list-group list-group-flush">
-                            {{-- <li class="list-group-item">0 Entrenadores</li> --}}
-                            {{-- <li class="list-group-item">{{ count($sport->members) }} Atletas</li> --}}
+                            <li class="list-group-item">{{ count($sport->coaches) == 1 ?  '1 Entrenador' : count($sport->coaches) . ' Entrenadores' }}</li>
+                            <li class="list-group-item">{{ count($sport->athletes) == 1 ? '1 Atleta' : count($sport->athletes) . ' Atletas' }}</li>
                             <li class="list-group-item">0 Equipos</li>
                         </ul>
                     </div>
