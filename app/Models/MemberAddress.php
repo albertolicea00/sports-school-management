@@ -27,11 +27,11 @@ class MemberAddress extends Model
 
     public function city()
     {
-        return $this->belongsTo(City::class);
+        return $this->belongsTo(AddressCity::class);
     }
 
     public function state()
     {
-        return $this->belongsTo(State::class);
+        return $this->belongsTo(AddressState::class);
     }
 }

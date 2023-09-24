@@ -130,6 +130,13 @@ window.addEventListener("show-deleted-message", function (event) {
         icon: "success",
     });
 });
+window.addEventListener("show-restored-message", function (event) {
+    consts.Toast.fire({
+        title: "¡RESTAURADO!",
+        html:  event.detail.object + ' <strong>' + event.detail.target + '</strong> creado exitosamente',
+        icon: "success",
+    });
+});
 
 window.addEventListener("show-save-confirm", function (event) {
     consts.swalWithBootstrapButtons
@@ -160,11 +167,11 @@ window.addEventListener("show-delete-confirm", function (event) {
             title: "¿Estas completamente seguro?",
             html: `<div class='text-start'>Al eliminar el ` + event.detail.object +
                 ` <strong>` + event.detail.target + `</strong> ` +
-                `no habra vuelta atras <br/><br/>Por motivos de seguridad debera replicar el id de la acción a continuación <br/><br/>` +
+                `no habra vuelta atras <br/><br/>Por motivos de seguridad deberá replicar el id de la acción a continuación <br/><br/>` +
                 `<strong>ID de la ACCIÓN : </strong>` + event.detail.action_id + `</div>`,
             icon: "warning",
             showCancelButton: true,
-            confirmButtonText: "Si, eliminalo!",
+            confirmButtonText: "Si, elimínelo!",
             input: "text",
             preConfirm: (inp_action_id) => {
                 if (inp_action_id != event.detail.action_id) {

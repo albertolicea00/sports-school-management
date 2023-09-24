@@ -40,4 +40,10 @@ class Athlete extends Model
             ->withPivot('about', 'enable', 'meta')
             ->withTimestamps();
     }
+    public function sports()
+    {
+        return $this->belongsToMany(Sport::class, 'athletes_has_sports')
+            ->withPivot('exp_years', 'about', 'enable', 'meta')
+            ->withTimestamps();
+    }
 }

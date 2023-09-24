@@ -14,12 +14,19 @@ use Livewire\Component;
 
 class AllTrainers extends Component
 {
+
+    protected $listeners = [
+        'deleteCoach'
+    ];
+
     public $error_message = 'Lamentamos este inconveniente, por favor sea paciente, en breve solucionaremos este problema';
     public $CreateMode = false;
     public $dni, $full_name, $gender, $birth_date, $location, $zip_code, $city_id, $state_id, $exp_years, $sport_id, $school_grade_id;
-    public $states, $cities;
-    public $sports;
-    public $school_grades;
+    public $states, $cities, $sports, $school_grades;
+    public $coaches;
+    public $id_to_delete;
+    public $id_to_edit;
+    public $can_restore = false;
 
     public function mount()
     {
@@ -28,6 +35,7 @@ class AllTrainers extends Component
         $this->gender = 'M';
         $this->sports = Sports::all()->where('enable', true);
         $this->school_grades = SchoolGrades::all()->where('enable', true);
+        $this->getCoaches();
     }
 
     public function updatedStateId()
@@ -41,12 +49,70 @@ class AllTrainers extends Component
         return view('livewire.management.trainers.all-trainers');
     }
 
+    // MOSTRAR
+
+    public function getCoaches()
+    {
+        $this->coaches = Couches::all()->where('enable', true);
+    }
+
+    //ACTUALIZAR
+
+
+
+    //ELIMINAR
+
+    public function askDeleteCoach($id)
+    {
+        $action_id = mt_rand(1000, 99999);
+        $coach = Couches::findOrFail($id);
+        $this->id_to_delete = $id;
+
+        $this->dispatchBrowserEvent('show-delete-confirm', [
+            'object' => 'ENTRENADOR',
+            'target' => $coach->member->name,
+            'action_id' => $action_id,
+            'emit_action' => 'deleteCoach',
+        ]);
+    }
+
+    public function deleteCoach()
+    {
+        $coach = Couches::findOrFail($this->id_to_delete);
+        $coach->update(['enable' =>  false]);
+
+        $this->dispatchBrowserEvent('show-deleted-message', [
+            'object' => 'ENTRENADOR',
+            'target' => $coach->member->name,
+        ]);
+        $this->can_restore = true;
+        $this->getCoaches();
+    }
+
+    public function restoreCouch()
+    {
+        $coach = Couches::findOrFail($this->id_to_delete);
+        $coach->update(['enable' => true]);
+
+        $this->dispatchBrowserEvent('show-restored-message', [
+            'object' => 'ENTRENADOR',
+            'target' => $coach->member->name,
+        ]);
+
+        $this->can_restore = false;
+
+        $this->getCoaches();
+    }
+
+
+    // CREAR 
     public function exitCreateMode()
     {
         $this->CreateMode = false;
         $this->reset();
         $this->mount();
         $this->resetValidation();
+        $this->getCoaches();
     }
 
     public function crearEntrenador()
@@ -89,8 +155,12 @@ class AllTrainers extends Component
 
             $coach = $member->coaches()->create([]);
 
-            //$sport = $member->sports();
-            //school-grade
+            $sport = $coach->sports()->attach($this->sport_id);
+
+
+            $school_grade = $coach->schoolGrades()->attach($this->school_grade_id);
+
+
             $this->reset();
 
 
@@ -107,5 +177,6 @@ class AllTrainers extends Component
                 'redirect' => '\trainer-management',
             ]);
         }
+        $this->getCoaches();
     }
 }

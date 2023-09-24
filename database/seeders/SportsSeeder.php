@@ -22,7 +22,7 @@ class SportsSeeder extends Seeder
                 'meta' => json_encode(['seed' => true]),
             ],
             [
-                'name' => 'Baloncesto',
+                'name' => 'Balonmano',
                 'about' => 'Emocionante deporte de equipo que se juega en una cancha rectangular con dos equipos compuestos por cinco jugadores cada uno.',
                 'enable' => true,
                 'meta' => json_encode(['seed' => true]),
