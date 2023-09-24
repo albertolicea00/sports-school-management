@@ -1,10 +1,12 @@
+
 <div>
     @if (session()->has('message'))
         <div class="alert alert-success text-white">{{ session('message') }}</div>
     @endif
     <div class="container-fluid px-2 px-md-4">
         <div class="page-header min-height-300 border-radius-xl mt-4"
-            style="background-image: url('{{ asset('assets') }}/img/profile-default-bg.jpg');">
+            {{-- style="background-image: url('{{ random_sport_image(auth()->user()->getFirstSport()->name);}}');"> --}}
+            style="background-image: url('{{ $this->randomize_img() }}');">
             <span class="mask  bg-gradient-dark  opacity-4"></span>
             <h1 class="text-center text-white" style="width: 20em;margin: auto;">Bienvenido de vuelta &nbsp;{{auth()->user()->name }}</h1>
         </div>

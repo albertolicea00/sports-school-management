@@ -6,7 +6,10 @@
             aria-hidden="true" id="iconSidenav"></i>
             <a class="navbar-brand m-0 d-flex text-wrap align-items-center" href=" {{ route('dashboard') }} ">
                 <img src="{{ asset('assets') }}/img/logo-ct.png" class="navbar-brand-img h-100" alt="main_logo">
-                <span class="ms-2 font-weight-bold text-white">Gestión docente al DEPORTE CUBANO</span>
+                <span class="ms-2 font-weight-bold text-white">Gestión docente al
+                    @php $sport = $sport = auth()->user()->getFirstSport(); @endphp
+                    {{ $sport ? Str::upper($sport->name) : 'DEPORTE CUBANO'  }} .
+                </span>
             </a>
     </div>
     <hr class="horizontal light mt-0 mb-2">
@@ -141,8 +144,8 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white {{ Route::currentRouteName() == 'accents-management' ? 'active bg-gradient-primary' : '' }}"
-                    href="{{ route('accents-management') }}">
+                <a class="nav-link text-white {{ Route::currentRouteName() == 'metrics-management' || Route::currentRouteName() == 'accents-management' ? 'active bg-gradient-primary' : '' }}"
+                    href="{{ route('metrics-management') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i style="font-size: 1rem;" class="fas fa-lg fa-school ps-1 pe-1 text-center"></i>
                     </div>
@@ -190,12 +193,12 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white {{ Route::currentRouteName() == 'database-1518' ? 'active bg-gradient-primary' : '' }} "
-                    href="{{ route('database-1518') }}">
+                <a class="nav-link text-white {{ Route::currentRouteName() == 'database-1618' ? 'active bg-gradient-primary' : '' }} "
+                    href="{{ route('database-1618') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i style="font-size: 1rem;" class="fas fa-lg fa-server ps-2 pe-2 text-center"></i>
                     </div>
-                    <span class="nav-link-text ms-0">Base Datos &nbsp; 15 - 18</span>
+                    <span class="nav-link-text ms-0">Base Datos &nbsp; 16 - 18</span>
                 </a>
             </li>
 {{----------------------------------------------------------------------------------------------------------------------------}}
