@@ -34,4 +34,8 @@ class Sport extends Model
             ->withPivot('exp_years', 'about', 'enable', 'meta')
             ->withTimestamps();
     }
+    public function metric_models()
+    {
+        return $this->hasMany(MetricModel::class);
+    }
 }

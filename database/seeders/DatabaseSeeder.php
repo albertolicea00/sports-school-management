@@ -30,6 +30,8 @@ class DatabaseSeeder extends Seeder
         // $this->call(InstructorTypesSeeder::class);
 
         $this->call(SportsSeeder::class);
+        $this->call(SchoolGradesSeeder::class);
+        $this->call(MetricModelSeeder::class);
 
     }
 }
