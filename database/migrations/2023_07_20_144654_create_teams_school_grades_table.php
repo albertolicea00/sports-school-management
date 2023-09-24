@@ -24,6 +24,9 @@ return new class extends Migration
             $table->id();
 
             $table->string('name');
+            $table->string('age');
+            $table->string('mix_range');
+            $table->string('max_range');
             $table->string('about')->nullable();
             $table->boolean('enable')->default(1);
             $table->json('meta')->nullable();

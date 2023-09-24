@@ -18,4 +18,16 @@ class SchoolGrade extends Model
     {
         return $this->hasMany(Athlete::class);
     }
+    public function coaches()
+    {
+        return $this->belongsToMany(Coach::class, 'coaches_school_grades')
+            // ->withPivot('about', 'enable', 'meta')
+            ->withTimestamps();
+    }
+    public function metric_models()
+    {
+        return $this->belongsToMany(MetricModel::class, 'school_grades_has_metrics')
+            // ->withPivot('about', 'enable', 'meta')
+            ->withTimestamps();
+    }
 }
