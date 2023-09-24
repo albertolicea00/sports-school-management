@@ -18,4 +18,10 @@ class Team extends Model
     {
         return $this->hasMany(Athlete::class);
     }
+    public function coaches()
+    {
+        return $this->belongsToMany(Coach::class, 'coaches_has_teams')
+            // ->withPivot('about', 'enable', 'meta')
+            ->withTimestamps();
+    }
 }

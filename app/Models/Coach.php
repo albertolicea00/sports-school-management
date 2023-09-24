@@ -22,21 +22,21 @@ class Coach extends Model
     public function athletes()
     {
         return $this->belongsToMany(Athlete::class, 'coaches_has_athetes')
-            ->withPivot('about', 'enable', 'meta')
+            // ->withPivot('about', 'enable', 'meta')
             ->withTimestamps();
     }
 
     public function teams()
     {
         return $this->belongsToMany(Team::class, 'coaches_has_teams')
-            ->withPivot('about', 'enable', 'meta')
+            // ->withPivot('about', 'enable', 'meta')
             ->withTimestamps();
     }
 
     public function schoolGrades()
     {
         return $this->belongsToMany(SchoolGrade::class, 'coaches_school_grades')
-            ->withPivot('about', 'enable', 'meta')
+            // ->withPivot('about', 'enable', 'meta')
             ->withTimestamps();
     }
     public function sports()

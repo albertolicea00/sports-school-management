@@ -37,7 +37,7 @@ class Athlete extends Model
     public function coaches()
     {
         return $this->belongsToMany(Coach::class, 'coaches_has_athetes')
-            ->withPivot('about', 'enable', 'meta')
+            // ->withPivot('about', 'enable', 'meta')
             ->withTimestamps();
     }
     public function sports()
