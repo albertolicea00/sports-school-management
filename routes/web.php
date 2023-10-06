@@ -38,15 +38,15 @@ use App\Http\Livewire\Management\Users\RolesPermissions\AllRoles;
 
 use App\Http\Livewire\Management\Sports\AllSports;
 use App\Http\Livewire\Management\Sports\Accents\AllAccents;
-use App\Http\Livewire\Management\Sports\Accents\AllMetrics;
+use App\Http\Livewire\Management\Metrics\AllMetrics;
 
 use App\Http\Livewire\Bankdata\Players\Database0709;
 use App\Http\Livewire\Bankdata\Players\Database1012;
 use App\Http\Livewire\Bankdata\Players\Database1315;
-use App\Http\Livewire\Bankdata\Players\Database1518;
+use App\Http\Livewire\Bankdata\Players\Database1618;
 
 
-
+use App\Models\MetricModel as MetricModels;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -112,13 +112,14 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('permissions-management', AllPermissions::class)->name('permissions-management');
     Route::get('roles-management', AllRoles::class)->name('roles-management');
     Route::get('sports-management', AllSports::class)->name('sports-management');
-    Route::get('accents-management', AllAccents::class)->name('accents-management');
+    // Route::get('accents-management', AllAccents::class)->name('accents-management');
     Route::get('metrics-management', AllMetrics::class)->name('metrics-management');
 
     Route::get('database-0709', Database0709::class)->name('database-0709');
     Route::get('database-1012', Database1012::class)->name('database-1012');
     Route::get('database-1315', Database1315::class)->name('database-1315');
-    Route::get('database-1518', Database1518::class)->name('database-1518');
+    Route::get('database-1618', Database1618::class)->name('database-1618');
+
 });
 
 
@@ -127,4 +128,16 @@ Route::group(['middleware' => 'auth'], function () {
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/help/{section?}', Help::class)->name('help');
     Route::get('{section?}/help', Help::class)->name('help');
+});
+
+
+
+// rutas de las metricas
+Route::group(['middleware' => 'auth'], function () {
+    $metric_models = MetricModels::all()->where('enable', true);
+    foreach ($metric_models as $metric) {
+        Route::get( 'metric/' . $metric->category->route . $metric->route,
+        $metric->component ? $metric->component : 'App\Http\Livewire\Inprogress'
+        )->name($metric->route);
+    }
 });

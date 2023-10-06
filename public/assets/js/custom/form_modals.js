@@ -133,7 +133,7 @@ window.addEventListener("show-deleted-message", function (event) {
 window.addEventListener("show-restored-message", function (event) {
     consts.Toast.fire({
         title: "¡RESTAURADO!",
-        html:  event.detail.object + ' <strong>' + event.detail.target + '</strong> creado exitosamente',
+        html:  event.detail.object + ' <strong>' + event.detail.target + '</strong> restaurado exitosamente',
         icon: "success",
     });
 });

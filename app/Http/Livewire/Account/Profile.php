@@ -89,4 +89,25 @@ class Profile extends Component
             session()->flash('message', 'El perfil no se ha podido actualizar.');
         }
     }
+
+
+    public function randomize_img(){
+        $defaultImage = asset('assets') . '/img/profile-default-bg.jpg';
+
+        $sportNameLowerCase = strtolower(str_replace(['á', 'é', 'í', 'ó', 'ú'], ['a', 'e', 'i', 'o', 'u'],  auth()->user()->getFirstSport()->name));
+        $imageFolder = public_path("assets/img/xsports/{$sportNameLowerCase}");
+        if (!is_dir($imageFolder)){ return $defaultImage; }
+
+        $imageFiles = scandir($imageFolder);
+        $imageFiles = array_diff($imageFiles, ['.', '..']);
+        $imageFileArray = array_values($imageFiles);
+        if (!$imageFileArray){ return $defaultImage; }
+
+        $randomIndex = array_rand($imageFileArray);
+        $randomImageName = $imageFileArray[$randomIndex];
+        $sportImage = asset('assets') . '/img/xsports/' . $sportNameLowerCase . '/img.jpg';
+        $sportImage = asset('assets') . '/img/xsports/' . $sportNameLowerCase . '/' . $randomImageName;
+
+        return $sportImage;
+    }
 }

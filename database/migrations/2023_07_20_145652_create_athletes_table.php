@@ -16,7 +16,7 @@ return new class extends Migration
 
             $table->unsignedBigInteger('member_id');
             $table->unsignedBigInteger('team_id')->nullable();
-            $table->unsignedBigInteger('school_grade_id');
+            $table->unsignedBigInteger('school_grade_id')->nullable();
             $table->string('skin_color')->nullable();
             $table->json('livewiths')->nullable();
             $table->boolean('is_parents_decreased')->default(0);

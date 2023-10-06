@@ -60,5 +60,9 @@ class User extends Authenticatable
             ->withTimestamps();
             // ->first();
     }
+    public function getFirstSport()
+    {
+        return $this->linkedMember->first()?->sports->first() ?? null;
+    }
 
 }
