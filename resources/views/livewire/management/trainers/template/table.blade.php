@@ -69,10 +69,7 @@
                     </p>
                 </td>
                 <td class="align-middle">
-                    <a rel="tooltip" class="btn btn-success btn-link" href="" data-original-title="" title="">
-                        <i class="material-icons">edit</i>
-                        <div class="ripple-container"></div>
-                    </a>
+                    @include('livewire.management.trainers.template.edit-trainer', ['couch_id' => $coach->id])
 
                     <button type="button" class="btn btn-danger btn-link" wire:click='askDeleteCoach({{ $coach->id }})'
                         data-original-title="" title="">

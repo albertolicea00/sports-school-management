@@ -37,6 +37,6 @@ class RolesSeeder extends Seeder
 
         // TEST
         Role::create(['name' => 'Guest']);
-        Role::create(['name' => 'Atleta']);
+        // Role::create(['name' => 'Atleta']);
     }
 }

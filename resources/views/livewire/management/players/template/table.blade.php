@@ -2,309 +2,88 @@
     <table class="table align-items-center mb-0">
         <thead>
             <tr>
-                <th
-                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                    ID
+                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                    CI
                 </th>
-                <th
-                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                    PHOTO</th>
-                <th
-                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                    NAME</th>
-                <th
-                    class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                    EMAIL</th>
-                <th
-                    class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                    ROLE</th>
-                <th
-                    class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                    CREATION DATE
-                </th>
+                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                    Nombre</th>
+                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                    Edad</th>
+                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                    Genero</th>
+                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                    Localidad</th>
+                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                    Color de Piel</th>
+                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                    Años de experiencia en el deporte</th>
                 <th class="text-secondary opacity-7"></th>
             </tr>
         </thead>
         <tbody>
+            @forelse ( $athletes as $athlete )
+
             <tr>
                 <td>
                     <div class="d-flex px-2 py-1">
                         <div class="d-flex flex-column justify-content-center">
-                            <p class="mb-0 text-sm">1</p>
+                            <p class="mb-0 text-sm">{{ $athlete->member->dni }}</p>
                         </div>
                     </div>
                 </td>
                 <td>
                     <div class="d-flex px-2 py-1">
                         <div>
-                            <img src="{{ asset('assets') }}/img/team-2.jpg"
-                                class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
+                            <p class="mb-0 text-sm">{{ $athlete->member->name }}</p>
                         </div>
 
                     </div>
                 </td>
                 <td>
                     <div class="d-flex flex-column justify-content-center">
-                        <h6 class="mb-0 text-sm">John</h6>
+                        <p class="mb-0 text-sm">
+                            @php
+                            $fechaNacimiento = new DateTime($athlete->member->birth_date);
 
+                            $fechaActual = new DateTime();
+
+                            $edad = $fechaActual->diff($fechaNacimiento)->y;
+                            @endphp
+                            {{ $edad }} años
+
+
+                        </p>
                     </div>
                 </td>
                 <td class="align-middle text-center text-sm">
-                    <p class="text-xs text-secondary mb-0">john@creative-tim.com
+                    <p class="mb-0 text-sm">{{ $athlete->member->gender }}</p>
+                </td>
+                <td class="align-middle text-center">
+                    <p class="mb-0 text-sm">
+                        {{ !empty($athlete->member->addresses) ? $athlete->member->addresses->first()->state->name : '' }},
+                        {{ !empty($athlete->member->addresses) ? $athlete->member->addresses->first()->city->name : '' }}
                     </p>
                 </td>
                 <td class="align-middle text-center">
-                    <span class="text-secondary text-xs font-weight-bold">Admin</span>
+                    <p class="mb-0 text-sm">
+                        {{ !empty($coach->sports) ? $coach->sports->first()->name : '' }}
+                    </p>
                 </td>
-                <td class="align-middle text-center">
-                    <span class="text-secondary text-xs font-weight-bold">22/03/18</span>
-                </td>
-                <td class="align-middle">
-                    <a rel="tooltip" class="btn btn-success btn-link"
-                        href="" data-original-title=""
-                        title="">
-                        <i class="material-icons">edit</i>
-                        <div class="ripple-container"></div>
-                    </a>
+                {{-- <td class="align-middle">
+                    @include('livewire.management.trainers.template.edit-player', ['player_id' => $coach->id])
 
-                    <button type="button" class="btn btn-danger btn-link"
-                    data-original-title="" title="">
-                    <i class="material-icons">close</i>
-                    <div class="ripple-container"></div>
+                    <button type="button" class="btn btn-danger btn-link" wire:click='askDeleteCoach({{ $coach->id }})'
+                data-original-title="" title="">
+                <i class="material-icons">close</i>
+                <div class="ripple-container"></div>
                 </button>
-                </td>
+                </td> --}}
             </tr>
-            <tr>
-                <td>
-                    <div class="d-flex px-2 py-1">
-                        <div class="d-flex flex-column justify-content-center">
-                            <p class="mb-0 text-sm">2</p>
-                        </div>
-                    </div>
-                </td>
-                <td>
-                    <div class="d-flex px-2 py-1">
-                        <div>
-                            <img src="{{ asset('assets') }}/img/team-3.jpg"
-                                class="avatar avatar-sm me-3 border-radius-lg" alt="user2">
-                        </div>
+            @empty
 
-                    </div>
-                </td>
-                <td>
-                    <div class="d-flex flex-column justify-content-center">
-                        <h6 class="mb-0 text-sm">Alexa</h6>
+            @endforelse
 
-                    </div>
-                </td>
-                <td class="align-middle text-center text-sm">
-                    <p class="text-xs text-secondary mb-0">
-                        alexa@creative-tim.com</p>
-                </td>
-                <td class="align-middle text-center">
-                    <span class="text-secondary text-xs font-weight-bold">Creator</span>
-                </td>
-                <td class="align-middle text-center">
-                    <span class="text-secondary text-xs font-weight-bold">16/06/18</span>
-                </td>
-                <td class="align-middle">
-                    <a rel="tooltip" class="btn btn-success btn-link"
-                    href="" data-original-title=""
-                    title="">
-                    <i class="material-icons">edit</i>
-                    <div class="ripple-container"></div>
-                </a>
-                    <button type="button" class="btn btn-danger btn-link"
-                        data-original-title="" title="">
-                        <i class="material-icons">close</i>
-                        <div class="ripple-container"></div>
-                    </button>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="d-flex px-2 py-1">
-                        <div class="d-flex flex-column justify-content-center">
-                            <p class="mb-0 text-sm">3</p>
-                        </div>
-                    </div>
-                </td>
-                <td>
-                    <div class="d-flex px-2 py-1">
-                        <div>
-                            <img src="{{ asset('assets') }}/img/team-4.jpg"
-                                class="avatar avatar-sm me-3 border-radius-lg" alt="user3">
-                        </div>
 
-                    </div>
-                </td>
-                <td>
-                    <div class="d-flex flex-column justify-content-center">
-                        <h6 class="mb-0 text-sm">Laurent</h6>
-
-                    </div>
-                </td>
-                <td class="align-middle text-center text-sm">
-                    <p class="text-xs text-secondary mb-0">
-                        laurent@creative-tim.com</p>
-                </td>
-                <td class="align-middle text-center">
-                    <span class="text-secondary text-xs font-weight-bold">Member</span>
-                </td>
-                <td class="align-middle text-center">
-                    <span class="text-secondary text-xs font-weight-bold">30/06/18</span>
-                </td>
-                <td class="align-middle">
-                    <a rel="tooltip" class="btn btn-success btn-link"
-                        href="" data-original-title=""
-                        title="">
-                        <i class="material-icons">edit</i>
-                        <div class="ripple-container"></div>
-                    </a>
-                    <button type="button" class="btn btn-danger btn-link"
-                    data-original-title="" title="">
-                    <i class="material-icons">close</i>
-                    <div class="ripple-container"></div>
-                </button>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="d-flex px-2 py-1">
-                        <div class="d-flex flex-column justify-content-center">
-                            <p class="mb-0 text-sm">4</p>
-                        </div>
-                    </div>
-                </td>
-                <td>
-                    <div class="d-flex px-2 py-1">
-                        <div>
-                            <img src="{{ asset('assets') }}/img/team-3.jpg"
-                                class="avatar avatar-sm me-3 border-radius-lg" alt="user4">
-                        </div>
-
-                    </div>
-                </td>
-                <td>
-                    <div class="d-flex flex-column justify-content-center">
-                        <h6 class="mb-0 text-sm">Michael</h6>
-                    </div>
-                </td>
-                <td class="align-middle text-center text-sm">
-                    <p class="text-xs text-secondary mb-0">
-                        michael@creative-tim.com</p>
-                </td>
-                <td class="align-middle text-center">
-                    <span class="text-secondary text-xs font-weight-bold">Member</span>
-                </td>
-                <td class="align-middle text-center">
-                    <span class="text-secondary text-xs font-weight-bold">16/06/19</span>
-                </td>
-                <td class="align-middle">
-                    <a rel="tooltip" class="btn btn-success btn-link"
-                        href="" data-original-title=""
-                        title="">
-                        <i class="material-icons">edit</i>
-                        <div class="ripple-container"></div>
-                    </a>
-                    <button type="button" class="btn btn-danger btn-link"
-                    data-original-title="" title="">
-                    <i class="material-icons">close</i>
-                    <div class="ripple-container"></div>
-                </button>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="d-flex px-2 py-1">
-                        <div class="d-flex flex-column justify-content-center">
-                            <p class="mb-0 text-sm">5</p>
-                        </div>
-                    </div>
-                </td>
-                <td>
-                    <div class="d-flex px-2 py-1">
-                        <div>
-                            <img src="{{ asset('assets') }}/img/team-2.jpg"
-                                class="avatar avatar-sm me-3 border-radius-lg" alt="user5">
-                        </div>
-
-                    </div>
-                </td>
-                <td>
-                    <div class="d-flex flex-column justify-content-center">
-                        <h6 class="mb-0 text-sm">Richard</h6>
-                    </div>
-                </td>
-                <td class="align-middle text-center text-sm">
-                    <p class="text-xs text-secondary mb-0">
-                        richard@creative-tim.com</p>
-                </td>
-                <td class="align-middle text-center">
-                    <span class="text-secondary text-xs font-weight-bold">Creator</span>
-                </td>
-                <td class="align-middle text-center">
-                    <span class="text-secondary text-xs font-weight-bold">16/06/18</span>
-                </td>
-                <td class="align-middle">
-                    <a rel="tooltip" class="btn btn-success btn-link"
-                        href="" data-original-title=""
-                        title="">
-                        <i class="material-icons">edit</i>
-                        <div class="ripple-container"></div>
-                    </a>
-                    <button type="button" class="btn btn-danger btn-link"
-                    data-original-title="" title="">
-                    <i class="material-icons">close</i>
-                    <div class="ripple-container"></div>
-                </button>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="d-flex px-2 py-1">
-                        <div class="d-flex flex-column justify-content-center">
-                            <p class="mb-0 text-sm">6</p>
-                        </div>
-                    </div>
-                </td>
-                <td>
-                    <div class="d-flex px-2 py-1">
-                        <div>
-                            <img src="{{ asset('assets') }}/img/team-4.jpg"
-                                class="avatar avatar-sm me-3 border-radius-lg" alt="user6">
-                        </div>
-                    </div>
-                </td>
-                <td>
-                    <div class="d-flex flex-column justify-content-center">
-                        <h6 class="mb-0 text-sm">Miriam</h6>
-                    </div>
-                </td>
-                <td class="align-middle text-center text-sm">
-                    <p class="text-xs text-secondary mb-0">
-                        miriam@creative-tim.com</p>
-                </td>
-                <td class="align-middle text-center">
-                    <span class="text-secondary text-xs font-weight-bold">Creator</span>
-                </td>
-                <td class="align-middle text-center">
-                    <span class="text-secondary text-xs font-weight-bold">26/06/18</span>
-                </td>
-                <td class="align-middle">
-                    <a rel="tooltip" class="btn btn-success btn-link"
-                        href="" data-original-title=""
-                        title="">
-                        <i class="material-icons">edit</i>
-                        <div class="ripple-container"></div>
-                    </a>
-                    <button type="button" class="btn btn-danger btn-link"
-                        data-original-title="" title="">
-                        <i class="material-icons">close</i>
-                        <div class="ripple-container"></div>
-                    </button>
-                </td>
-            </tr>
         </tbody>
     </table>
 </div>

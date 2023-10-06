@@ -2,24 +2,31 @@
 
 namespace App\Http\Livewire\Management\Memebers;
 
-use Illuminate\Support\Facades\DB;
 use App\Models\AddressState as AddressStates;
 use App\Models\AddressCity as AddressCities;
-
+use App\Models\Sport as Sports;
+use App\Models\Member as Members;
+use App\Models\Athlete as Athletes;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
 class AllPlayers extends Component
 {
+    public $error_message = 'Lamentamos este inconveniente, por favor sea paciente, en breve solucionaremos este problema';
     public $createMode = false;
     public $name, $dni, $gender, $birth, $location, $skinColor, $expeYears, $city_id, $state_id, $zip;
     public $skin_colors = ['Piel caucásica o blanca', 'Piel negra o afrodescendiente', 'Piel asiática o amarilla'];
     public $states, $cities;
+    public $sports;
+    public $athletes;
 
     public function mount()
     {
         $this->states = AddressStates::all()->where('enable', true);
         $this->cities = AddressCities::all()->where('enable', true);
+        $this->sports = Sports::all()->where('enable', true);
         $this->gender = 'M';
+        $this->getAthletes();
     }
 
     public function updatedStateId()
@@ -27,24 +34,32 @@ class AllPlayers extends Component
         $this->cities = $this->states->find($this->state_id)->cities;
     }
 
-
     public function render()
     {
         return view('livewire.management.players.all-players');
+    }
+
+    public function getAthletes()
+    {
+        $this->athletes = Athletes::all()->where('enable', true);
     }
 
     public function exitcreateMode()
     {
         $this->createMode = false;
         $this->reset();
+        $this->mount();
         $this->resetValidation();
+        $this->getAthletes();
     }
+
+
     public function crearAtleta()
     {
         $this->validate([
             // 'name' => 'required|alpha|regex:/^[a-zA-Z]+$/|max:100|',
             'name' => 'required|alpha|max:100|',
-            'zip' => 'required',
+            'zip' => 'numeric',
 
             'dni' => 'required|regex:/^[0-9]+$/|size:11',
 
@@ -70,14 +85,38 @@ class AllPlayers extends Component
 
         try {
             DB::beginTransaction();
+            $member = Members::create([
+                'dni' => $this->dni,
+                'name' => $this->name,
+                'birth_date' => $this->birth,
+                'gender' => $this->gender == 'M' ? 'Masculino' : 'Femenino',
+            ]);
+            $address = $member->addresses()->create([
+                'city_id' => $this->city_id,
+                'state_id' => $this->state_id,
+                'location' => $this->location,
+                'zip_code' => $this->zip,
+            ]);
 
 
+            //$sport = $athletes->sports()->attach($this->sport_id);
+            $athletes = $member->athletes()->create([]);
+
+            $this->reset();
 
             DB::commit(); // Confirma la transacción
-            session()->flash('message', 'Nuevo Atleta creado con éxito.');
+
+            $this->dispatchBrowserEvent('show-created-message', [
+                'object' => 'ATLETA',
+                'target' => $member->name,
+            ]);
         } catch (\Throwable $th) {
             DB::rollBack(); // Revierte la transacción en caso de error
-            session()->flash('message', 'Error al crear el atleta.');
+            $this->dispatchBrowserEvent('ddbb-error', [
+                'message' => $this->error_message,
+                'redirect' => '\players-management',
+            ]);
         }
+        $this->getAthletes();
     }
 }
