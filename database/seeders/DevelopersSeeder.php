@@ -83,18 +83,18 @@ class DevelopersSeeder extends Seeder
 
 
         $member3 = Member::create([
-            'dni' => '56172394',
-            'name' => 'Carlos Alberto',
-            'nickname' => 'CA',
+            'dni' => '123145234',
+            'name' => 'Mayte',
+            'nickname' => 'May',
             'birth_date' => '2002-10-19',
-            'gender' => 'Masculino',
+            'gender' => 'Femenino',
             'about' => 'About de miembro',
         ]);
         $user3 = User::factory()->create([
-            'name' => 'Carlos',
-            'email' => 'carlos@schoolsports.com',
-            'phone' => '+53 56247162',
-            'about' => 'Desarrollador de la plataforma de gestión deportiva',
+            'name' => 'Mayte',
+            'email' => 'test@test.com',
+            'phone' => '+53 51937125',
+            'about' => 'Profe',
             'password' => ('secret123')
         ])->assignRole('Developer');
 
