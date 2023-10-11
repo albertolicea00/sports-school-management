@@ -4,10 +4,25 @@
     <div class="container-fluid py-1 px-3">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-                <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Página</a></li>
-                <li class="breadcrumb-item text-sm text-dark active text-capitalize" aria-current="page">{{ str_replace('-', ' ', Route::currentRouteName()) }}</li>
+                <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="/">Página</a></li>
+                <li class="breadcrumb-item text-sm text-dark active text-capitalize" aria-current="page">
+                    <a href="{{ route(Route::currentRouteName()) }}">
+                        {{-- {{ implode(' / ', array_map('ucwords', explode('-', str_replace('_', ' ', Route::currentRouteName())))) }} --}}
+                        {{ str_replace('_', ' ', str_replace('/', ' / ', str_replace('-', ' ', Route::currentRouteName()))) }}
+                    </a>
+                </li>
             </ol>
-            <h6 class="font-weight-bolder mb-0 text-capitalize">{{ str_replace('-', ' ', Route::currentRouteName()) }}</h6>
+            {{-- <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+                <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Página</a></li>
+                <li class="breadcrumb-item text-sm text-dark active text-capitalize" aria-current="page">
+                </li>
+            </ol> --}}
+            <h6 class="font-weight-bolder mb-0 text-capitalize">
+                {{
+                    __(str_replace('/', '', str_replace('_', ' ', str_replace('-', ' ', substr(Route::currentRouteName(), strpos(Route::currentRouteName(), '/') )))))
+                }}
+            </h6>
+
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
             <div class="ms-md-auto pe-md-3 d-flex align-items-center">

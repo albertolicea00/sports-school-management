@@ -94,7 +94,7 @@ class Profile extends Component
     public function randomize_img(){
         $defaultImage = asset('assets') . '/img/profile-default-bg.jpg';
 
-        $sportNameLowerCase = strtolower(str_replace(['á', 'é', 'í', 'ó', 'ú'], ['a', 'e', 'i', 'o', 'u'],  auth()->user()->getFirstSport()->name));
+        $sportNameLowerCase = strtolower(str_replace(['á', 'é', 'í', 'ó', 'ú'], ['a', 'e', 'i', 'o', 'u'],  auth()->user()->getFirstSport() != null ? auth()->user()->getFirstSport()->name : null));
         $imageFolder = public_path("assets/img/xsports/{$sportNameLowerCase}");
         if (!is_dir($imageFolder)){ return $defaultImage; }
 
