@@ -30,35 +30,22 @@ class MetricModelSeeder extends Seeder
 
 // -------------------- TESTS --------------------
         $test_performance_1  = MetricModel::create([
-            "model" => "App\\Models\\MetricTestPerformance",
-            'model_id' => 1,
-            "table" => "metric_test_performance",
+            "template" => "metric-test-performance",
             "component" => 'App\\Http\\Livewire\\Management\\Metrics\\Template\\MetricTestPerformance',
-            "route" => "metric_test_performance",
+            "model" => "App\\Models\\MetricTestPerformance",
+            "model_coache_test" => "App\\Models\\",
+            "model_athlete_test" => "App\\Models\\",
+            'model_id' => null,
+            "table" => "metric_test_performance",
+            "route" => "balonmano/metric_test_performance",
             "name_s" => "Test Físico",
             "name_p" => "Tests Físico",
             "icon" => "fas fa-weight",
             "color" => "#ff9b85",
             "category_id" => $tests->id,
-            "sport_id" => 1
+            "sport_id" => 2
         ]);
-        $test_performance_1->school_grade()->sync([1, 2]);
-
-        $test_performance_2  = MetricModel::create([
-            "model" => "App\\Models\\MetricTestPerformance",
-            'model_id' => 1,
-            "table" => "metric_test_performance",
-            "component" => 'App\\Http\\Livewire\\Management\\Metrics\\Template\\MetricTestPerformance',
-            "route" => "metric_test_performance",
-            "name_s" => "Test Físico",
-            "name_p" => "Tests Físico",
-            "icon" => "fas fa-weight",
-            "color" => "#ff9b85",
-            "category_id" => $tests->id,
-            "sport_id" =>1
-        ]);
-
-
+        $test_performance_1->school_grade()->sync([1, 2, 3, 4, 5, 6, 7, 8]);
 
 
 
