@@ -34,10 +34,11 @@ return new class extends Migration
 
         Schema::create('metric_test_performance_fields', function (Blueprint $table) {
             $table->id();
-            $table->string('unit')->nullable();
             $table->string('name');
+            $table->string('unit')->nullable();
+            $table->string('measure')->nullable();
             $table->string('about')->nullable();
-            $table->boolean('enable')->default(1);
+            $table->boolean('enable')->default(0);
             $table->json('meta')->nullable();
             $table->timestamps();
         });

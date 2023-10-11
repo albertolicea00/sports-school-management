@@ -14,8 +14,12 @@
         </tr>
     </thead>
     <tbody>
+        @php $keys = []; @endphp
         @forelse ($metrics as $metric)
         @forelse ($metric->fields as $field)
+        @if (in_array($field->id, $keys)) @continue @endif
+        @php $keys[] = $field->id; @endphp
+
         <tr>
             <td>
                 <a href="javascript:void(0)">
@@ -27,10 +31,10 @@
             </td>
             <td>
                 <div class="d-flex px-2 py-1">
-                    <a href="javascript:;" class="text-secondary font-weight-bold text-xs mx-1" data-toggle="tooltip"
-                        data-original-title="ESTADISTICA">
+                    {{-- <a href="javascript:;" class="text-secondary font-weight-bold text-xs mx-1"
+                        data-toggle="tooltip" data-original-title="ESTADISTICA">
                         <i class="far fa-chart-bar fa-lg"></i>
-                    </a>
+                    </a> --}}
                     <a href="javascript:;" class="text-secondary font-weight-bold text-xs mx-2" data-toggle="tooltip"
                         data-original-title="NORMA">
                         <i class="fas fa-scroll"></i>
@@ -42,7 +46,7 @@
             </td>
             <td class="ps-2">
                 <p class="text-center text-xs font-weight-bold mb-0">
-
+                    {{ $field->measure }}
                     {{ $field->unit }}
                 </p>
             </td>

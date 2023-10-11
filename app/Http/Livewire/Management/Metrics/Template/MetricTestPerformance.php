@@ -155,17 +155,17 @@ class MetricTestPerformance extends Component // MetricsModelTools::getComponent
     public $createFieldMode = false;
     public $editFieldMode = false;
 
-    public $field_name, $field_unit, $field_about, $field_status,
+    public $field_name, $field_unit, $field_measure, $field_about, $field_status,
         $field_modules_ids;
-    public $field_new_name, $field_new_unit, $field_new_about, $field_new_status, $field_new_modules_ids;
-    public $field_edit_name, $field_edit_unit, $field_edit_about, $field_edit_status, $field_edit_modules_ids;
+    public $field_new_name, $field_new_unit, $field_new_measure, $field_new_about, $field_new_status, $field_new_modules_ids;
+    public $field_edit_name, $field_edit_unit, $field_edit_measure, $field_edit_about, $field_edit_status, $field_edit_modules_ids;
     public $field_id_to_delete;
     public $field_id_to_edit;
 
     public function updatedCreateFieldMode()
     {
         $this->modules = MetricTestPerformances::all();
-        $this->field_new_modules_ids = array_fill_keys(array_flip($this->modules->pluck('id')->toArray()), false);
+        $this->field_new_modules_ids = [];
     }
     public function exitFieldMode($mode)
     {
@@ -178,14 +178,15 @@ class MetricTestPerformance extends Component // MetricsModelTools::getComponent
     public function newField()
     {
         $this->validate([
-
             'field_new_name' => 'required|string|max:30',
-            // 'field_new_unit' => 'required',
-            // 'field_new_about' => 'required|max:255',
+            'field_new_unit' => 'nullable',
+            'field_new_measure' => 'nullable|numeric',
+            'field_new_about' => 'nullable|max:255',
             // 'field_new_status' => 'required|max:255',
-            // 'field_new_modules_ids' => 'required|max:255',
+            'field_new_modules_ids' => 'required',
         ], [
             'required' => 'El campo es obligatorio.',
+            'field_new_modules_ids.required' => 'Necesita seleccionar al menos un modulo.',
             'string' => 'El campo debe ser una cadena de caracteres.',
             'max' => 'El campo no debe superar :max caracteres.',
         ]);
@@ -195,19 +196,24 @@ class MetricTestPerformance extends Component // MetricsModelTools::getComponent
         try {
             DB::beginTransaction(); // Inicia la transacción
 
-            $module = MetricTestPerformanceFields::create([
-                // 'name' => $this->new_name,
-                // 'about' => $this->new_about,
+            $field = MetricTestPerformanceFields::create([
+                'name' => $this->field_new_name,
+                'unit' => $this->field_new_unit,
+                'measure' => $this->field_new_measure,
+                'about' => $this->field_new_about,
+                'enable' => false,
                 'meta' => json_encode(['seed' => false]),
             ]);
+            $module = $field->metric()->sync(array_keys($this->field_new_modules_ids, 'true'));
 
-            // $this->restart();
+            $this->restart();
 
             DB::commit(); // Confirma la transacción
             $this->dispatchBrowserEvent('show-created-message', [
                 'object' => 'TEST',
-                'target' =>  $module->name,
+                'target' =>  $field->name,
             ]);
+
         } catch (\Throwable $th) {
             DB::rollBack(); // Revierte la transacción en caso de error
             $this->dispatchBrowserEvent('ddbb-error', [

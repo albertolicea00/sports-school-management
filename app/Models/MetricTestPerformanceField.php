@@ -8,8 +8,9 @@ class MetricTestPerformanceField extends Model
 {
     protected $table = 'metric_test_performance_fields';
     protected $fillable = [
-        'unit',
         'name',
+        'unit',
+        'measure',
         'about',
         'enable',
         'meta',

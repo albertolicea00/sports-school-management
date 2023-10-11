@@ -12,7 +12,7 @@
                 <div class="px-2">
 
                     <div class="row">
-                        <div class="col-8">
+                        <div class="col-7">
                             <div class="input-group input-group-outline mt-3">
                                 <label class="form-label fix-label-form" for="field_new_name" wire:ignore>Nombre: </label>
                                 <input wire:model="field_new_name" type="text" class="form-control mt-1" name="field_new_name"
@@ -20,7 +20,15 @@
                             </div>
                             @error('field_new_name')<p class="text-danger inputerror text-start">{{ $message }}</p>@enderror
                         </div>
-                        <div class="col-4">
+                        <div class="col-3 px-0">
+                            <div class="input-group input-group-outline mt-3">
+                                <label class="form-label fix-label-form" for="field_new_measure" wire:ignore>Medida: </label>
+                                <input wire:model="field_new_measure" type="number" class="form-control mt-1" name="field_new_measure"
+                                id="swal-field_new_measure" required>
+                            </div>
+                            @error('field_new_measure')<p class="text-danger inputerror text-start">{{ $message }}</p>@enderror
+                        </div>
+                        <div class="col-2">
                             <div class="input-group input-group-outline mt-3">
                                 <label class="form-label fix-label-form" for="field_new_unit" wire:ignore>Unidad: </label>
                                 <input wire:model="field_new_unit" type="text" class="form-control mt-1" name="field_new_unit"
