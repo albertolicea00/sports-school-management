@@ -26,8 +26,11 @@ return new class extends Migration
             $table->unsignedBigInteger('sport_id')->nullable();
             $table->string('route');
             $table->string('table');
-            $table->string('model');
+            $table->string('template')->nullable();
             $table->string('component')->nullable();
+            $table->string('model');
+            $table->string('model_coache_test')->nullable();
+            $table->string('model_athlete_test')->nullable();
             $table->unsignedBigInteger('model_id')->nullable();
             $table->string('color');
             $table->string('icon');

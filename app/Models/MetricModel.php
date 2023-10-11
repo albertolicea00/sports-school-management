@@ -11,12 +11,16 @@ class MetricModel extends Model
         'model_id',
         'table',
         'route',
+        'component',
+        'template',
         'name_s',
         'name_p',
         'icon',
         'color',
         'sport_id',
         'category_id',
+        'about',
+        'meta',
     ];
 
 
@@ -32,8 +36,6 @@ class MetricModel extends Model
 
     public function school_grade()
     {
-        return $this->belongsToMany(SchoolGrade::class, 'school_grades_has_metrics')
-            // ->withPivot('about', 'enable', 'meta')
-            ->withTimestamps();
+        return $this->belongsToMany(SchoolGrade::class, 'school_grades_has_metrics', 'metric_model_id', 'school_grade_id');
     }
 }

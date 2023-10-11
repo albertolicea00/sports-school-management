@@ -35,9 +35,7 @@ class Coach extends Model
 
     public function schoolGrades()
     {
-        return $this->belongsToMany(SchoolGrade::class, 'coaches_school_grades')
-            // ->withPivot('about', 'enable', 'meta')
-            ->withTimestamps();
+        return $this->belongsToMany(SchoolGrade::class, 'coaches_school_grades', 'school_grade_id', 'coach_id');
     }
     public function sports()
     {
@@ -45,4 +43,8 @@ class Coach extends Model
             ->withPivot('exp_years', 'about', 'enable', 'meta')
             ->withTimestamps();
     }
+
+
+    // metricas del entrenador
+    //  ....
 }

@@ -46,4 +46,8 @@ class Athlete extends Model
             ->withPivot('exp_years', 'about', 'enable', 'meta')
             ->withTimestamps();
     }
+
+
+    // metricas del atleta
+    //  ....
 }
