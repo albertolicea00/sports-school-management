@@ -38,4 +38,10 @@ class Sport extends Model
     {
         return $this->hasMany(MetricModel::class);
     }
+
+    // test especificos
+    public function metric_performance()
+    {
+        return $this->hasMany(MetricTestPerformanceField::class);
+    }
 }

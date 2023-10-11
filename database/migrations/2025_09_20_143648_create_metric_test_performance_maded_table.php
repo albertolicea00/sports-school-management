@@ -9,6 +9,7 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
+    // FALTAN ESTOS MODELOS
     public function up(): void
     {
         Schema::create('athetes_made_test_performance', function (Blueprint $table) {
@@ -23,11 +24,15 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreign('athlete_id')->references('id')->on('athletes')->constrained();
-            // ->onUpdate('cascade')
-            // ->onDelete('cascade');
+            // ->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('coach_id')->references('id')->on('coaches')->constrained();
-            // ->onUpdate('cascade')
-            // ->onDelete('cascade');
+            // ->onUpdate('cascade')->onDelete('cascade');
+        });
+
+        Schema::create('coaches_made_test_performance', function (Blueprint $table) {
+            $table->id();
+            // falta la parte de la evaluación al  entrenador
+            $table->timestamps();
         });
     }
 
@@ -37,5 +42,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('athetes_made_test_performance');
+        Schema::dropIfExists('coaches_made_test_performance');
     }
 };

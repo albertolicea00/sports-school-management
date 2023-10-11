@@ -20,14 +20,17 @@ class SchoolGrade extends Model
     }
     public function coaches()
     {
-        return $this->belongsToMany(Coach::class, 'coaches_school_grades')
-            // ->withPivot('about', 'enable', 'meta')
-            ->withTimestamps();
+        return $this->belongsToMany(Coach::class, 'coaches_school_grades', 'school_grade_id', 'coach_id');
     }
     public function metric_models()
     {
-        return $this->belongsToMany(MetricModel::class, 'school_grades_has_metrics')
-            // ->withPivot('about', 'enable', 'meta')
-            ->withTimestamps();
+        return $this->belongsToMany(MetricTestPerformance::class, 'school_grades_has_metrics', 'school_grade_id', 'metric_model_id');
     }
+
+    // test especificos
+    public function metric_performance()
+    {
+        return $this->belongsToMany(MetricTestPerformanceField::class, 'school_grades_has_metrics', 'school_grade_id', 'metric_id');
+    }
+
 }
