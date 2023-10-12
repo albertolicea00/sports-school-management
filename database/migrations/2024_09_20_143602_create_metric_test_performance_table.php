@@ -42,19 +42,6 @@ return new class extends Migration
             $table->json('meta')->nullable();
             $table->timestamps();
         });
-        Schema::create('metric_test_performance_field_norms', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('field_id');
-            $table->json('norm_scores')->nullable();
-            $table->json('standard_scores')->nullable();
-            $table->boolean('enable')->default(1);
-            $table->json('meta')->nullable();
-            $table->timestamps();
-
-            $table->foreign('field_id')->references('id')->on('metric_test_performance_fields')->constrained();
-            // ->onUpdate('cascade')
-            // ->onDelete('cascade');
-        });
 
         Schema::create('metric_test_performance_has_fields', function (Blueprint $table) {
             $table->id();
@@ -66,6 +53,20 @@ return new class extends Migration
             // ->onUpdate('cascade')
             // ->onDelete('cascade');
             $table->foreign('filed_id')->references('id')->on('metric_test_performance_fields')->constrained();
+            // ->onUpdate('cascade')
+            // ->onDelete('cascade');
+        });
+
+        Schema::create('metric_test_performance_norms', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('metric_field_id');
+            $table->json('norm_scores')->nullable();
+            $table->json('standard_scores')->nullable();
+            $table->boolean('enable')->default(1);
+            $table->json('meta')->nullable();
+            $table->timestamps();
+
+            $table->foreign('metric_field_id')->references('id')->on('metric_test_performance_has_fields')->constrained();
             // ->onUpdate('cascade')
             // ->onDelete('cascade');
         });

@@ -22,10 +22,11 @@
 
         <tr>
             <td>
-                <a href="javascript:void(0)">
-                    @if ($field->enable) <span class="badge badge-sm bg-gradient-success"
-                        style="font-size: .7em;">activo</span>
-                    @else <span class="badge badge-sm bg-gradient-secondary" style="font-size: .7em;">inactivo</span>
+                <a wire:click='changeFieldStatus("{{ $field->id }}")' href="javascript:;">
+                    @if ($field->enable)
+                    <span class="badge badge-sm bg-gradient-success" style="font-size: .7em;">activo</span>
+                    @else
+                    <span class="badge badge-sm bg-gradient-secondary" style="font-size: .7em;">inactivo</span>
                     @endif
                 </a>
             </td>

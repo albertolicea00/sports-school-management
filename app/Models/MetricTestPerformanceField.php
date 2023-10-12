@@ -19,6 +19,10 @@ class MetricTestPerformanceField extends Model
     // Relaciones
     public function metric()
     {
-        return $this->belongsToMany(MetricTestPerformance::class, 'metric_test_performance_has_fields', 'filed_id', 'metric_id');
+        return $this->belongsToMany(MetricTestPerformance::class, 'metric_test_performance_has_fields', 'field_id', 'metric_id');
+    }
+    public function norm()
+    {
+        return $this->belongsToMany(MetricTestPerformanceNorm::class, 'metric_test_performance_has_fields', 'field_id', 'metric_id');
     }
 }

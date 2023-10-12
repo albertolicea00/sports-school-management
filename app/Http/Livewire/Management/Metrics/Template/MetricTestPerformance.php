@@ -162,6 +162,23 @@ class MetricTestPerformance extends Component // MetricsModelTools::getComponent
     public $field_id_to_delete;
     public $field_id_to_edit;
 
+    public function changeFieldStatus($id){
+        $field = MetricTestPerformanceFields::findOrFail($id);
+        $status = !$field->enable;
+        // dd($field->norm);
+        // dd($field->norm == null);
+
+        if (true) $field->update(['enable' => $status]);
+        else if ($status == false) $field->update(['enable' => $status]);
+        else if ($status == true && $field->norm != null) $field->update(['enable' => $status]);
+        else{
+            // mandar mensaje de que debe llenar la norma para habilitar el test
+            return;
+        }
+        $this->getNewMetrics();
+
+    }
+
     public function updatedCreateFieldMode()
     {
         $this->modules = MetricTestPerformances::all();
