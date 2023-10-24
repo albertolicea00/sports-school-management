@@ -60,9 +60,7 @@ class AllPlayers extends Component
             // 'name' => 'required|alpha|regex:/^[a-zA-Z]+$/|max:100|',
             'name' => 'required|alpha|max:100|',
             'zip' => 'numeric',
-
             'dni' => 'required|regex:/^[0-9]+$/|size:11',
-
             'gender' => 'required|in:M,F',
             'birth' => 'required|date',
             'location' => 'required|string|max:255',
@@ -83,8 +81,11 @@ class AllPlayers extends Component
 
         $this->createMode = false;
 
+
         try {
             DB::beginTransaction();
+
+
             $member = Members::create([
                 'dni' => $this->dni,
                 'name' => $this->name,
@@ -99,8 +100,12 @@ class AllPlayers extends Component
             ]);
 
 
-            //$sport = $athletes->sports()->attach($this->sport_id);
-            $athletes = $member->athletes()->create([]);
+            $athletes = $member->athletes()->create([
+                'skin_color' => $this->skin_colors,
+            ]);
+
+            // como crear un registo de una relacion en laravel de mucho a muchos donde el campo que necesito llenar esta en la tabla intermedia 
+            //$sport = $athletes->sports()->attach($this->athletes_has_sport);
 
             $this->reset();
 

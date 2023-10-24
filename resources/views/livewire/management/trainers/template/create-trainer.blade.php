@@ -87,9 +87,10 @@
                         <label class="form-label fix-label-form" for="birth_date" wire:ignore>Fecha de
                             nacimiento: </label>
                         <input wire:model="birth_date" type="date" class="form-control" name="birth_date"
-                            id="swal-birth_date" required>
+                            id="swal-birth_date" required min="{{ now()->subYears(100)->format('Y-m-d') }}"
+                            max="{{ now()->subYears(18)->format('Y-m-d') }}">
                     </div>
-                    @error('birth_date')<p class="text-danger inputerror text-start">{{ $message }}</p>@enderror
+                    @error('birth_date')<p class=" text-danger inputerror text-start">{{ $message }}</p>@enderror
 
                     <div class="input-group input-group-outline mt-4">
                         <label class="form-label fix-label-form" for="sport_id" wire:ignore>Deporte (principal):

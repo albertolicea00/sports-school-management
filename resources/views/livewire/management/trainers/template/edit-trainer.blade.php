@@ -18,19 +18,19 @@
         <div class="px-2">
 
           <div class="input-group input-group-outline mt-3">
-            <label class="form-label fix-label-form" for="state_id" wire:ignore>Provincia: </label>
-            <select name="state_id" id="swal-state_id" class="form-control" wire:model="state_id" required>
-              <option value="">Seleccione</option>
+            <label class="form-label fix-label-form" for="edit_state_id" wire:ignore>Provincia: </label>
+            <select name="edit_state_id" id="swal-edit_state_id" class="form-control" wire:model='edit_state_id'
+              required>
               @foreach ($states as $state)
               <option value="{{ $state->id }}">{{ $state->name }}</option>
               @endforeach
             </select>
           </div>
-          @error('state_id')<p class="text-danger inputerror text-start">{{ $message }}</p>@enderror
+          @error('edit_state_id')<p class="text-danger inputerror text-start">{{ $message }}</p>@enderror
 
           <div class="input-group input-group-outline mt-4">
             <label class="form-label fix-label-form" for="city_id" wire:ignore>Municipio: </label>
-            <select name="city_id" id="swal-city_id" class="form-control" wire:model="city_id" required>
+            <select name="city_id" id="swal-city_id" class="form-control" wire:model="edit_city_id" required>
               <option value="">Seleccione</option>
               @foreach ($cities as $city)
               <option value="{{ $city->id }}">{{ $city->name }}</option>
@@ -89,7 +89,8 @@
             <label class="form-label fix-label-form" for="edit_birth_date" wire:ignore>Fecha de
               nacimiento: </label>
             <input wire:model="edit_birth_date" type="date" class="form-control" name="edit_birth_date"
-              id="swal-edit_birth_date" required>
+              id="swal-edit_birth_date" required min="{{ now()->subYears(100)->format('Y-m-d') }}"
+              max="{{ now()->subYears(18)->format('Y-m-d') }}">
           </div>
           @error('edit_birth_date')<p class="text-danger inputerror text-start">{{ $message }}</p>@enderror
 
@@ -97,7 +98,6 @@
             <label class="form-label fix-label-form" for="edit_sport_id" wire:ignore>Deporte (principal):
             </label>
             <select name="state_id" id="swal-edit_sport_id" class="form-control" wire:model="edit_sport_id" required>
-              <option value="">Seleccione</option>
               @foreach ($sports as $sport)
               <option value="{{ $sport->id }}">{{ $sport->name }}</option>
               @endforeach
@@ -108,10 +108,9 @@
 
 
           <div class="input-group input-group-outline mt-4">
-            <label class="form-label fix-label-form" for="edit_exp_years" wire:ignore>Años de experiencia
-              : </label>
+            <label class="form-label fix-label-form" for="edit_exp_years" wire:ignore>Años de experiencia: </label>
             <input wire:model="edit_exp_years" type="number" class="form-control" name="edit_exp_years"
-              id="swal-edit_exp_years" required>
+              id="swal-edit_exp_years" wire:model='edit_exp_years' required>
           </div>
           @error('edit_exp_years')<p class="text-danger inputerror text-start">{{ $message }}</p>@enderror
 
@@ -120,7 +119,6 @@
             <label class="form-label fix-label-form" for="school_grade_id" wire:ignore>Grado escolar:
             </label>
             <select name="school_grade_id" id="swal-school_grade_id" class="form-control">
-              <option value="">Seleccione</option>
               @foreach ($school_grades as $school_grade)
               <option value="{{ $school_grade->id }}">{{ $school_grade->name }}</option>
               @endforeach

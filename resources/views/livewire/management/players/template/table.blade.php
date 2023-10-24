@@ -15,9 +15,9 @@
                     Localidad</th>
                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                     Color de Piel</th>
-                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                {{-- <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                     Años de experiencia en el deporte</th>
-                <th class="text-secondary opacity-7"></th>
+                <th class="text-secondary opacity-7"></th> --}}
             </tr>
         </thead>
         <tbody>
@@ -66,18 +66,31 @@
                 </td>
                 <td class="align-middle text-center">
                     <p class="mb-0 text-sm">
-                        {{ !empty($coach->sports) ? $coach->sports->first()->name : '' }}
+                        {{ $athlete->skin_color }}
                     </p>
                 </td>
-                {{-- <td class="align-middle">
-                    @include('livewire.management.trainers.template.edit-player', ['player_id' => $coach->id])
 
-                    <button type="button" class="btn btn-danger btn-link" wire:click='askDeleteCoach({{ $coach->id }})'
-                data-original-title="" title="">
-                <i class="material-icons">close</i>
-                <div class="ripple-container"></div>
-                </button>
+                {{-- <td class="align-middle text-center">
+                    <p class="mb-0 text-sm">
+                        {{ $athlete->expeYears }}
+                </p>
                 </td> --}}
+
+                {{-- <td class="align-middle text-center">
+                    <p class="mb-0 text-sm">
+                        {{ !empty($athlete->sports) ? $athlete->sports() : '' }}
+                </p>
+                </td> --}}
+
+                <td class="align-middle">
+                    @include('livewire.management.players.template.edit-player', ['player_id' => $athlete->id])
+
+                    <button type="button" class="btn btn-danger btn-link"
+                        wire:click='askDeletePlayer({{ $athlete->id }})' data-original-title="" title="">
+                        <i class="material-icons">close</i>
+                        <div class="ripple-container"></div>
+                    </button>
+                </td>
             </tr>
             @empty
 

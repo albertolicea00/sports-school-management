@@ -6,6 +6,7 @@ use App\Models\AddressState as AddressStates;
 use App\Models\AddressCity as AddressCities;
 use App\Models\CoachesSchoolGrades;
 use App\Models\Coach as Couches;
+use App\Models\Coach;
 use App\Models\SchoolGrade as SchoolGrades;
 use App\Models\Sport as Sports;
 use App\Models\Member as Members;
@@ -74,9 +75,14 @@ class AllTrainers extends Component
         $coach = Couches::findOrFail($id);
         $this->id_to_edit = $id;
 
+        $this->states = AddressStates::all()->where('enable', true);
+        $this->cities = AddressCities::all()->where('enable', true);
+        $this->sports = Sports::all()->where('enable', true);
+        $this->school_grades = SchoolGrades::all()->where('enable', true);
+
         $this->edit_dni = $coach->member->dni;
         $this->edit_full_name = $coach->member->name;
-        $this->edit_gender = $coach->member->gender;
+        $this->edit_gender = $coach->member->gender == 'Masculino' ? 'M' : 'F';
         $this->edit_birth_date = $coach->member->birth_date;
         $this->edit_location =  !empty($coach->member->addresses) ? $coach->member->addresses->first()->location : '';
         $this->edit_zip_code = !empty($coach->member->addresses) ? $coach->member->addresses->first()->zip_code : '';
@@ -94,7 +100,7 @@ class AllTrainers extends Component
             'edit_full_name' => 'required|string|max:100',
             'edit_gender' => 'required|string|max:1',
             'edit_birth_date' => 'required|date',
-            'edit_location' => 'required|string',
+            'edit_location' => 'required|string|min:10|regex:/^[a-zA-Z0-9\s,\/]+$/',
             'edit_zip_code' => 'numeric',
             'edit_city_id' => 'required|numeric',
             'edit_state_id' => 'required|numeric',
@@ -111,34 +117,34 @@ class AllTrainers extends Component
 
         try {
             DB::beginTransaction(); // Inicia la transacción
-            $member = Members::create([
+
+            $coach = Coach::findOrFail($this->id_to_edit);
+            $coach->member->update([
                 'dni' => $this->edit_dni,
                 'name' => $this->edit_full_name,
                 'birth_date' => $this->edit_birth_date,
                 'gender' => $this->edit_gender == 'M' ? 'Masculino' : 'Femenino',
             ]);
-            $address = $member->addresses()->create([
-                'city_id' => $this->edit_city_id,
-                'state_id' => $this->edit_state_id,
-                'location' => $this->edit_location,
-                'zip_code' => $this->edit_zip_code,
-            ]);
 
-            $coach = $member->coaches()->update([]);
+            //como actualizar un registro en laravel con una relacion de uno a muchos.
+            // $coach->member->addresses()->sync([
+            //     'city_id' => $this->edit_city_id,
+            //     'state_id' => $this->edit_state_id,
+            //     'location' => $this->edit_location,
+            //     'zip_code' => $this->edit_zip_code,
+            // ]);
 
-            $sport = $coach->sports()->attach($this->sport_id);
-
-            $school_grade = $coach->schoolGrades()->attach($this->school_grade_id);
-
-
-            $this->reset();
+            $coach->sports()->sync([$this->edit_sport_id]);
+            $coach->schoolGrades()->sync([$this->school_grade_id]);
 
 
+
+            // $this->reset();
             DB::commit(); // Confirma la transacción
 
             $this->dispatchBrowserEvent('show-created-message', [
                 'object' => 'ENTRENADOR',
-                'target' => $member->name,
+                'target' => $coach->member->name,
             ]);
         } catch (\Throwable $th) {
             DB::rollBack(); // Revierte la transacción en caso de error
@@ -214,7 +220,7 @@ class AllTrainers extends Component
             'full_name' => 'required|alpha|max:100|',
             'gender' => 'required|in:M,F',
             'birth_date' => 'required|date',
-            'location' => 'required|string',
+            'location' => 'required|string|min:10|regex:/^[a-zA-Z0-9\s,\/]+$/',
             'zip_code' => 'numeric',
             'city_id' => 'required|numeric',
             'state_id' => 'required|numeric',
